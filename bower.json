@@ -1,0 +1,24 @@
+{
+  "name": "Jib-Collective Wordpress Theme",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gustavpursche/jib-collective",
+  "authors": [
+    "Gustav Pursche <gustavpursche@gmail.com>"
+  ],
+  "main": "index.php",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "license": "GNU",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "~3.0.1"
+  }
+}
