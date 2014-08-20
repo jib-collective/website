@@ -15,7 +15,7 @@ module.exports = function ( grunt ) {
 
     watch: {
       scripts: {
-        files: [ 'less/*.less' ],
+        files: [ 'less/**/*.less' ],
         tasks: [ 'less', 'concat' ],
         options: {
           spawn: false,
