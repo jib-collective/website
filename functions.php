@@ -5,6 +5,8 @@
   add_image_size( 'featured-category-image', 700 );
   add_image_size( 'category-image', 350 );
 
+  add_action( 'init', 'register_nav_menus' );
+
   register_nav_menus( array(
     'primary'   => __( 'Top primary menu', 'jib-collective' )
   ) );
