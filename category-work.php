@@ -2,24 +2,10 @@
 
 <div class="grid">
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <?php
-      $featured_class = "";
-      $is_featured = false;
-
-      if( has_tag( 'featured' ) ) {
-        $featured_class = "post--featured";
-        $is_featured = true;
-      }
-    ?>
-
-    <div class="post <?php echo $featured_class ?>">
+    <div class="post">
       <?php
         if ( has_post_thumbnail() ) {
-          if( $is_featured ) {
-            the_post_thumbnail( 'featured-category-image', array( "class" => "post_image" ));
-          } else {
-            the_post_thumbnail( 'category-image', array( "class" => "post_image" ));
-          }
+          the_post_thumbnail( 'large', array( "class" => "post_image" ));
         }
       ?>
 
