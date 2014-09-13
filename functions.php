@@ -9,6 +9,18 @@
     register_nav_menu( 'header-menu', __( 'Header Menu' ) );
   }
 
+  function exclude_pages_from_admin( $query ) {
+    if ( !is_admin() ) {
+      return $query;
+    }
+
+    global $pagenow, $post_type;
+
+    if ( $pagenow == 'edit.php' && $post_type == 'page' )
+      $query-> query_vars[ 'post__not_in' ] = array( 49, 43 );
+  }
+
   add_action( 'init', 'register_my_menu' );
+  add_filter( 'parse_query', 'exclude_pages_from_admin' );
 
 ?>
