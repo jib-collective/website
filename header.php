@@ -1,8 +1,18 @@
 <!doctype html />
 
+<?php
+  $pagetitle = wp_title( '', false );
+
+  if( !$pagetitle ) {
+    $pagetitle = 'jib-collective';
+  } else {
+    $pagetitle .= " | jib-collective";
+  }
+?>
+
 <html>
   <head>
-    <title>Tutorial theme</title>
+    <title><?php echo $pagetitle; ?></title>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
     <meta charset="utf-8" />
   </head>
