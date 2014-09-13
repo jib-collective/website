@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="grid">
+<div class="grid app_content-limiter">
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <div class="post">
       <?php
