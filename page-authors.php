@@ -14,11 +14,11 @@
       $userdata = get_user_meta( $user->ID );
       $bio = $userdata['biography'][0];
       $url = get_author_posts_url( $user->ID );
-      $image_url = get_field( $userdata['_image'][0], 'user_' . $user->ID );
+      $image_id = get_field( $userdata['_image'][0], 'user_' . $user->ID );
       ?>
 
       <li class="author">
-        <img src="<?php echo $image_url; ?>" class="author_image" />
+        <?php echo wp_get_attachment_image( $image_id, 'thumbnail', 1, array( 'class' => 'author_image' ) ); ?>
 
         <div class="author_data">
           <h2 class="author_title">
