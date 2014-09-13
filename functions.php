@@ -1,10 +1,10 @@
 <?php
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'post-formats', array( 'gallery', 'video' ) );
-  add_theme_support( 'post-thumbnails' );
 
   add_image_size( 'featured-category-image', 700 );
   add_image_size( 'category-image', 350 );
+  add_image_size( 'custom-size', 220, 180 );
   set_post_thumbnail_size( 150, 150 );
 
   function register_my_menu() {

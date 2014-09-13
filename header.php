@@ -20,19 +20,21 @@
 
 <div class="page">
   <header class="header grid">
-    <div class="header_logo">
-      <?php if( !is_home() ) { ?>
-        <a href="/">
-      <?php } ?>
+    <div class="app_content-limiter">
+      <div class="header_logo">
+        <?php if( !is_home() ) { ?>
+          <a href="/">
+        <?php } ?>
 
-        <strong>jib-collective</strong>
+          <strong>jib-collective</strong>
 
-      <?php if( !is_home() ) { ?>
-        </a>
-      <?php } ?>
+        <?php if( !is_home() ) { ?>
+          </a>
+        <?php } ?>
+      </div>
+
+      <?php wp_nav_menu(array( "container" => '',
+                               "menu_class" => 'header_menu' )); ?>
     </div>
-
-    <?php wp_nav_menu(array( "container" => '',
-                             "menu_class" => 'header_menu' )); ?>
   </header>
   <div class="main">

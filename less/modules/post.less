@@ -1,36 +1,63 @@
 .post {
+  background-color: darken( @base-color, 20% );
   float: left;
-  height: 11.6666em;
+  height: 26.6666em;
   margin: 0 1em 1em 0;
-  position: relative;
   overflow: hidden;
-  width: 17.5em;
+  width: 19em;
+
+  > a {
+    display: block;
+  }
 
   &_meta {
-    background-color: rgba( 0, 0, 0, .6 );
-    bottom: 0;
-    left: 0;
-    line-height: 1.2;
-    padding: 1em;
-    position: absolute;
-    width: 100%;
+    line-height: 1.4;
+    padding: .5em 1em;
   }
 
   &_image {
+    height: 203px;
     width: 100%;
   }
 
   &_excerpt {
-    font-family: Georgia;
+    font-family: Arial;
+    font-size: .9em;
+
+    > p {
+      margin: 0;
+    }
   }
 
   &_headline {
+    font-family: Georgia;
+    font-size: 1.3em;
+    font-weight: normal;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: .2em;
+
+    > a:hover,
+    > a:focus {
+      text-decoration: underline;
+    }
   }
 
   &--featured {
-    height: 23.3333em;
-    width: 35em;
+    position: relative;
+    width: 39em;
+  }
+
+  &--featured &_meta {
+    background-color: rgba( red( darken( @base-color, 20% ) ),
+                            green( darken( @base-color, 20% ) ),
+                            blue( darken( @base-color, 20% ) ), .8 );
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  &--featured &_image {
+    height: 100%;
   }
 }
