@@ -2,7 +2,8 @@
 
 <?php
 
-  $posts = query_posts('category=1');
+  $posts = query_posts( array( 'tag__in' => array( 1 ),
+                               'category__id' => array( 1 ) ) );
   wp_reset_query();
 ?>
 
@@ -16,12 +17,13 @@
       $excerpt = get_field( 'excerpt', $post_id );
 
       if( has_tag( 'featured', $post ) ) {
+        $post->shown = true;
   ?>
 
     <div class="post post--featured">
       <?php
         if( has_post_thumbnail( $post_id ) ) {
-          echo get_the_post_thumbnail( $post_id, 'category-image', array( "class" => "post_image" ));
+          echo get_the_post_thumbnail( $post_id, 'featured-category-image', array( "class" => "post_image" ));
         }
       ?>
 
@@ -47,7 +49,7 @@
       $is_featured = false;
       $excerpt = get_field( 'excerpt', $post_id );
 
-      if( !has_tag( 'featured', $post ) ) {
+      if( !$post->shown ) {
   ?>
 
     <div class="post">
