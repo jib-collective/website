@@ -3,7 +3,7 @@
 <?php
 
   $posts = query_posts( array( 'tag__in' => array( 1 ),
-                               'category__id' => array( 1 ) ) );
+                               'category__id' => array( 4 ) ) );
   wp_reset_query();
 ?>
 
