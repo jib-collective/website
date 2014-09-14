@@ -2,8 +2,8 @@
 
 <?php
 
-  $posts = query_posts( array( 'tag__in' => array( 1 ),
-                               'category__in' => array( 4 ) ) );
+  $posts = query_posts( array( 'tag__in' => array( 4 ),
+                               'category__in' => array( 1 ) ) );
   wp_reset_query();
 ?>
 
