@@ -21,8 +21,6 @@
       $is_featured = false;
     }
 
-    var_dump( $is_featured );
-
     $post_id = $post->ID;
     $acf_fields = get_field_objects( $post_id );
     $excerpt = get_field( 'excerpt', $post_id );
