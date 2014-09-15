@@ -17,7 +17,7 @@
             <?php the_title(); ?>
           </h2>
 
-          <div class="post_excerpt">
+          <div class="post_excerpt richtext">
             <?php echo get_field( 'excerpt', $post->ID ) ?>
           </div>
         </div>
