@@ -33,13 +33,14 @@
     ?>
 
     <div class="post <?php if( $is_featured ) { echo 'post--featured'; } ?>">
-      <?php
-        if( has_post_thumbnail( $post_id ) ) {
-          echo get_the_post_thumbnail( $post_id, $imagetype, array( "class" => "post_image" ));
-        }
-      ?>
+      <a href="<?php echo get_permalink($post_id); ?>">
+        <?php
+          if( has_post_thumbnail( $post_id ) ) {
+            echo get_the_post_thumbnail( $post_id, $imagetype, array( "class" => "post_image" ));
+          }
+        ?>
 
-      <div class="post_meta">
+        <div class="post_meta">
           <h2 class="post_headline">
             <?php echo $post->post_title; ?>
           </h2>
@@ -48,6 +49,7 @@
             <?php echo $excerpt; ?>
           </div>
         </div>
+      </a>
     </div>
 
     <?php
