@@ -6,7 +6,9 @@
       <a href="<?php echo get_permalink( $post->ID ); ?>">
         <?php
           if ( has_post_thumbnail() ) {
-            the_post_thumbnail( 'large', array( "class" => "post_image" ));
+            echo '<div class="post_image-wrap">';
+            the_post_thumbnail( 'medium', array( "class" => "post_image" ));
+            echo '</div>';
           }
         ?>
 

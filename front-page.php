@@ -33,10 +33,12 @@
     ?>
 
     <div class="post <?php if( $is_featured ) { echo 'post--featured'; } ?>">
-      <a href="<?php echo get_permalink($post_id); ?>">
+      <a href="<?php echo get_permalink( $post_id ); ?>">
         <?php
           if( has_post_thumbnail( $post_id ) ) {
+            echo '<div class="post_image-wrap">';
             echo get_the_post_thumbnail( $post_id, $imagetype, array( "class" => "post_image" ));
+            echo '</div>';
           }
         ?>
 
