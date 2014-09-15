@@ -27,7 +27,7 @@
             </a>
           </h2>
 
-          <div class="richtext">
+          <div class="author_bio richtext">
             <?php echo $bio; ?>
           </div>
         </div>
