@@ -1,15 +1,30 @@
 .header {
-  background-color: lighten( @base-color, 5% );
-  padding: .5em 3em;
+  height: 8em;
   position: relative;
 
+  > .app_content-limiter {
+    height: 100%;
+    position: relative;
+  }
+
   &_logo {
-    float: left;
+    bottom: -7px;
+    left: -120px;
+    position: absolute;
+  }
+
+  &_logo > a {
+    display: block;
+  }
+
+  &_logo-image {
+    display: block;
+    height: 135px;
   }
 
   &_menu {
     list-style: none;
-    margin: 0;
+    margin: 5.9em 0 0 0;
     padding: 0;
     float: right;
   }
@@ -19,12 +34,14 @@
   }
 
   &_menu > li > a {
-    font-family: Georgia;
+    font-family: @font-family-serif;
+    font-size: 1.3em;
     font-style: italic;
-    padding: .3em .8em;
+    margin: 0 .5em;
+    padding: .6em .4em .3em .4em;
   }
 
   &_menu > .current-menu-item > a {
-    border-top: 2px solid @signal-color;
+    border-bottom: 2px solid @base-text-color;
   }
 }

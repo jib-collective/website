@@ -22,9 +22,11 @@
                                       1,
                                       array( 'class' => 'author_image' ) ); ?>
 
-  <p class="author_data richtext">
-    <?php echo $bio[0]; ?>
-  </p>
+  <div class="author_data">
+    <p class="author_bio richtext">
+      <?php echo $bio[0]; ?>
+    </p>
+  </div>
 
   <h2 class="page_headline">Portfolio</h2>
   <?php

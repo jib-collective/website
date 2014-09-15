@@ -26,7 +26,8 @@
           <a href="/">
         <?php } ?>
 
-          <strong>jib-collective</strong>
+          <img class="header_logo-image"
+               src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" />
 
         <?php if( !is_home() ) { ?>
           </a>
