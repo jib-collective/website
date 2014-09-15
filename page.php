@@ -10,7 +10,7 @@
   </h1>
 
   <article class="page richtext">
-    <?php  echo $page->post_content; ?>
+    <?php  echo apply_filters( 'the_content', $post->post_content ); ?>
   </article>
 </div>
 

@@ -24,5 +24,4 @@
 
   add_action( 'init', 'register_my_menu' );
   add_filter( 'parse_query', 'exclude_pages_from_admin' );
-
 ?>

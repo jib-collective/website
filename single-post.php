@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
-single post
+<div class="grid app_content-limiter">
+  <?php get_template_part( 'content', get_post_format() ); ?>
+</div>
 
 <?php get_footer(); ?>
