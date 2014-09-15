@@ -1,8 +1,13 @@
 <?php
   $post = get_post();
   $post_id = $post->ID;
+  $post_title = $post->post_title;
   $images = get_field( 'images', $post_id );
 ?>
+
+<h1 class="page_headline">
+  <?php echo $post_title; ?>
+</h1>
 
 <div class="slider" style="height: 700px">
   <?php
