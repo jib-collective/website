@@ -40,7 +40,7 @@
     <h2>Contact</h2>
     <ul class="author_contact">
       <?php if( $email ) { ?>
-        <li class="">
+        <li>
           <span>Email: </span>
           <a href="mailto: <?php echo $email; ?>">
             <?php echo $email; ?>
@@ -57,7 +57,7 @@
       <?php } ?>
 
       <?php if( $telephone ) { ?>
-        <li class="">
+        <li>
           <span>Telephone: </span>
           <a href="tel: <?php echo $telephone; ?>">
             <?php echo $telephone; ?>
@@ -67,26 +67,25 @@
 
       <?php if( $twitter ) { ?>
         <li class="author_contact-margin-top">
-          <span>Twitter: </span>
+          <i class="fa fa-twitter-square"></i>
           <a href="http://twitter.com/<?php echo $twitter; ?>">
-            <?php echo $twitter; ?>
+            <span class="author_contact-domain">twitter.com/</span><?php echo $twitter; ?>
           </a>
         </li>
       <?php } ?>
 
       <?php if( $facebook ) { ?>
-        <li class="">
-          <span>Facebook: </span>
+        <li>
+          <i class="fa fa-facebook-square"></i>
           <a href="http://facebook.com/<?php echo $facebook; ?>">
-            <?php echo $facebook; ?>
+            <span class="author_contact-domain">facebook.com/</span><?php echo $facebook; ?>
           </a>
         </li>
       <?php } ?>
 
       <?php if( $skype ) { ?>
-        <li class="">
-          <span>Skype: </span>
-          
+        <li>
+          <i class="fa fa-skype"></i>
           <a href="skype:<?php echo $skype; ?>">
             <?php echo $skype; ?>
           </a>
@@ -94,19 +93,19 @@
       <?php } ?>
 
       <?php if( $tumblr ) { ?>
-        <li class="">
-          <span>Tumblr: </span>
+        <li>
+          <i class="fa fa-tumblr-square"></i>
           <a href="http://<?php echo $tumblr; ?>.tumblr.com">
-            <?php echo $tumblr; ?>
+            <?php echo $tumblr; ?><span class="author_contact-domain">.tumblr.com</span>
           </a>
         </li>
       <?php } ?>
 
       <?php if( $vimeo ) { ?>
-        <li class="">
-          <span>Vimeo: </span>
+        <li>
+          <i class="fa fa-vimeo-square"></i>
           <a href="http://vimeo.com/<?php echo $vimeo; ?>">
-            <?php echo $vimeo; ?>
+            <span class="author_contact-domain">vimeo.com/</span><?php echo $vimeo; ?>
           </a>
         </li>
       <?php } ?>

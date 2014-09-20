@@ -13,6 +13,7 @@
 <html>
   <head>
     <title><?php echo $pagetitle; ?></title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
     <meta charset="utf-8" />
   </head>
