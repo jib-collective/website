@@ -114,7 +114,7 @@
     </ul>
   </div>
 
-  <<?php if( $posts ) { ?>
+  <?php if( $posts ) { ?>
     <h2 class="page_headline">Portfolio</h2>
   <?php } ?>
 
