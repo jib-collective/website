@@ -28,7 +28,7 @@
           </h2>
 
           <div class="author_bio richtext">
-            <?php echo $bio; ?>
+            <?php echo apply_filters( 'the_content', $bio ); ?>
           </div>
         </div>
       </li>

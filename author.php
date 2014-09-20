@@ -7,7 +7,17 @@
 
     $userdata = get_user_meta( $author_id );
     $bio = $userdata['biography'];
+
     $image_id = get_field( $userdata['_image'][0], 'user_' . $author->ID );
+    $twitter = get_field( 'twitter', 'user_' . $author->ID );
+    $facebook = get_field( 'facebook', 'user_' . $author->ID );
+    $tumblr = get_field( 'tumblr', 'user_' . $author->ID );
+    $vimeo = get_field( 'vimeo', 'user_' . $author->ID );
+    $skype = get_field( 'skype', 'user_' . $author->ID );
+
+    $telephone = get_field( 'telephone', 'user_' . $author->ID );
+    $email = get_field( 'publicemail', 'user_' . $author->ID );
+    $pgp = get_field( 'pgp-key', 'user_' . $author->ID );
 
     $posts = query_posts( array( 'author' => $author_id,
                                  'category' => 5 ) );
@@ -23,9 +33,85 @@
                                       array( 'class' => 'author_image' ) ); ?>
 
   <div class="author_data">
-    <p class="author_bio richtext">
-      <?php echo $bio[0]; ?>
-    </p>
+    <div class="author_bio richtext">
+      <?php echo apply_filters( 'the_content', $bio[0] ); ?>
+    </div>
+
+    <h2>Contact</h2>
+    <ul class="author_contact">
+      <?php if( $email ) { ?>
+        <li class="">
+          <span>Email: </span>
+          <a href="mailto: <?php echo $email; ?>">
+            <?php echo $email; ?>
+          </a>
+
+        <?php if( $pgp ) { ?>
+          <small>
+            <a href="#">PGP-Key</a>
+          </small>
+          <pre class="pgp u-is-hidden"><?php echo $pgp; ?></pre>
+        <?php } ?>
+
+        </li>
+      <?php } ?>
+
+      <?php if( $telephone ) { ?>
+        <li class="">
+          <span>Telephone: </span>
+          <a href="tel: <?php echo $telephone; ?>">
+            <?php echo $telephone; ?>
+          </a>
+        </li>
+      <?php } ?>
+
+      <?php if( $twitter ) { ?>
+        <li class="author_contact-margin-top">
+          <span>Twitter: </span>
+          <a href="http://twitter.com/<?php echo $twitter; ?>">
+            <?php echo $twitter; ?>
+          </a>
+        </li>
+      <?php } ?>
+
+      <?php if( $facebook ) { ?>
+        <li class="">
+          <span>Facebook: </span>
+          <a href="http://facebook.com/<?php echo $facebook; ?>">
+            <?php echo $facebook; ?>
+          </a>
+        </li>
+      <?php } ?>
+
+      <?php if( $skype ) { ?>
+        <li class="">
+          <span>Skype: </span>
+          
+          <a href="skype:<?php echo $skype; ?>">
+            <?php echo $skype; ?>
+          </a>
+        </li>
+      <?php } ?>
+
+      <?php if( $tumblr ) { ?>
+        <li class="">
+          <span>Tumblr: </span>
+          <a href="http://<?php echo $tumblr; ?>.tumblr.com">
+            <?php echo $tumblr; ?>
+          </a>
+        </li>
+      <?php } ?>
+
+      <?php if( $vimeo ) { ?>
+        <li class="">
+          <span>Vimeo: </span>
+          <a href="http://vimeo.com/<?php echo $vimeo; ?>">
+            <?php echo $vimeo; ?>
+          </a>
+        </li>
+      <?php } ?>
+
+    </ul>
   </div>
 
   <h2 class="page_headline">Portfolio</h2>
