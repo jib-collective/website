@@ -114,7 +114,10 @@
     </ul>
   </div>
 
-  <h2 class="page_headline">Portfolio</h2>
+  <<?php if( $posts ) { ?>
+    <h2 class="page_headline">Portfolio</h2>
+  <?php } ?>
+
   <?php
   $counter = 1;
 
