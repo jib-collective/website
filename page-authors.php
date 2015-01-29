@@ -5,8 +5,6 @@
 ?>
 
 <div class="app_content-limiter">
-  <h1 class="page_headline">Authors</h1>
-
   <ul class="author_list">
 
   <?php
