@@ -53,7 +53,13 @@
       <?php } ?>
     </div>
 
-    <?php wp_nav_menu(array( "container" => '',
+    <?php wp_nav_menu(array( "theme_location" => "header-menu",
+                             "container" => '',
                              "menu_class" => 'header_menu' )); ?>
+
+    <strong class="header_menu-headline">Follow Us</strong>
+    <?php wp_nav_menu(array( "theme_location" => "header-social",
+                             "container" => "",
+                             "menu_class" => "header_menu header_menu--social" )); ?>
   </header>
   <div class="main">

@@ -11,6 +11,7 @@
 
   function register_my_menu() {
     register_nav_menu( 'header-menu', __( 'Header Menu' ) );
+    register_nav_menu( 'header-social', __( 'Social Menu' ) );
   }
 
   function exclude_pages_from_admin( $query ) {
