@@ -3,7 +3,7 @@
 
     <script type="text/javascript">
       WebFontConfig = {
-        google: { families: [ 'Roboto:400:latin' ] }
+        google: { families: [ 'Roboto:400:latin', 'Open+Sans:400,300:latin' ] }
       };
       (function() {
         var wf = document.createElement('script');

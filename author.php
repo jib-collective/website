@@ -1,39 +1,51 @@
 <?php get_header(); ?>
 
-<div class="page author author--full app_content-limiter">
+<h1 class="page_headline">
+  <?php the_author(); ?>
+</h1>
+
+<div class="page author author--full">
   <?php
     $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
     $author_id = $author->ID;
 
     $userdata = get_user_meta( $author_id );
-    $bio = $userdata['biography'];
+    $bio = $userdata[ 'biography' ];
 
-    $image_id = get_field( $userdata['_image'][0], 'user_' . $author->ID );
-    $twitter = get_field( 'twitter', 'user_' . $author->ID );
-    $facebook = get_field( 'facebook', 'user_' . $author->ID );
-    $tumblr = get_field( 'tumblr', 'user_' . $author->ID );
-    $vimeo = get_field( 'vimeo', 'user_' . $author->ID );
-    $skype = get_field( 'skype', 'user_' . $author->ID );
+    $image_id = get_field( $userdata['_image'][0], 'user_' . $author_id );
+    $twitter = get_field( 'twitter', 'user_' . $author_id );
+    $facebook = get_field( 'facebook', 'user_' . $author_id );
+    $tumblr = get_field( 'tumblr', 'user_' . $author_id );
+    $vimeo = get_field( 'vimeo', 'user_' . $author_id );
+    $skype = get_field( 'skype', 'user_' . $author_id );
 
-    $telephone = get_field( 'telephone', 'user_' . $author->ID );
-    $email = get_field( 'publicemail', 'user_' . $author->ID );
-    $pgp = get_field( 'pgp-key', 'user_' . $author->ID );
+    $telephone = get_field( 'telephone', 'user_' . $author_id );
+    $email = get_field( 'publicemail', 'user_' . $author_id );
+    $pgp = get_field( 'pgp-key', 'user_' . $author_id );
 
-    $posts = query_posts( array( 'author' => $author_id,
-                                 'category' => 5 ) );
+     $author_query = new WP_Query(
+       array(
+         'post_type' => 'post',
+         'post_status' => 'publish',
+         'post_category' => 5,
+         'author_name' => $userdata['nickname'][0],
+         'posts_per_page' => -1,
+       )
+     );
+
+     $POSTS = $author_query->posts;
   ?>
 
-  <h1 class="page_headline">
-    <?php the_author() ?>
-  </h1>
-
   <?php echo wp_get_attachment_image( $image_id,
-                                      'thumbnail',
+                                      'author-portrait',
                                       1,
-                                      array( 'class' => 'author_image' ) ); ?>
+                                      array(
+                                        'class' => 'author_image',
+                                      )
+                                    ); ?>
 
-  <div class="author_data">
-    <div class="author_bio richtext">
+  <div class="author_bio">
+    <div class="richtext">
       <?php echo apply_filters( 'the_content', $bio[0] ); ?>
     </div>
 
@@ -67,8 +79,9 @@
 
       <?php if( $twitter ) { ?>
         <li class="author_contact-margin-top">
-          <i class="fa fa-twitter-square"></i>
           <a href="http://twitter.com/<?php echo $twitter; ?>">
+            <img class="author_service-icon"
+                 src="<?php bloginfo( 'template_directory' ); ?>/images/twitter.svg" />
             <span class="author_contact-domain">twitter.com/</span><?php echo $twitter; ?>
           </a>
         </li>
@@ -76,8 +89,9 @@
 
       <?php if( $facebook ) { ?>
         <li>
-          <i class="fa fa-facebook-square"></i>
           <a href="http://facebook.com/<?php echo $facebook; ?>">
+            <img class="author_service-icon"
+                 src="<?php bloginfo( 'template_directory' ); ?>/images/facebook.svg" />
             <span class="author_contact-domain">facebook.com/</span><?php echo $facebook; ?>
           </a>
         </li>
@@ -85,8 +99,9 @@
 
       <?php if( $skype ) { ?>
         <li>
-          <i class="fa fa-skype"></i>
           <a href="skype:<?php echo $skype; ?>">
+            <img class="author_service-icon"
+                 src="<?php bloginfo( 'template_directory' ); ?>/images/skype.svg" />
             <?php echo $skype; ?>
           </a>
         </li>
@@ -94,8 +109,9 @@
 
       <?php if( $tumblr ) { ?>
         <li>
-          <i class="fa fa-tumblr-square"></i>
           <a href="http://<?php echo $tumblr; ?>.tumblr.com">
+            <img class="author_service-icon"
+                 src="<?php bloginfo( 'template_directory' ); ?>/images/tumblr.svg" />
             <?php echo $tumblr; ?><span class="author_contact-domain">.tumblr.com</span>
           </a>
         </li>
@@ -103,8 +119,9 @@
 
       <?php if( $vimeo ) { ?>
         <li>
-          <i class="fa fa-vimeo-square"></i>
           <a href="http://vimeo.com/<?php echo $vimeo; ?>">
+            <img class="author_service-icon"
+                 src="<?php bloginfo( 'template_directory' ); ?>/images/vimeo.svg" />
             <span class="author_contact-domain">vimeo.com/</span><?php echo $vimeo; ?>
           </a>
         </li>
@@ -114,46 +131,10 @@
   </div>
 
   <?php if( $posts ) { ?>
-    <h2 class="page_headline">Portfolio</h2>
+    <h2 class="author_block-headline">Portfolio</h2>
   <?php } ?>
 
-  <?php
-  $counter = 1;
-
-  foreach ( $posts as $index => $post ) {
-    $post_id = $post->ID;
-    $acf_fields = get_field_objects( $post_id );
-    $excerpt = get_field( 'excerpt', $post_id );
-    $imagetype = 'category-image';
-    ?>
-
-    <div class="post">
-      <a href="<?php echo get_permalink( $post_id ); ?>">
-        <?php
-          if( has_post_thumbnail( $post_id ) ) {
-            echo '<div class="post_image-wrap">';
-            echo get_the_post_thumbnail( $post_id, $imagetype, array( "class" => "post_image" ));
-            echo '</div>';
-          }
-        ?>
-
-        <div class="post_meta">
-          <h2 class="post_headline">
-            <?php echo $post->post_title; ?>
-          </h2>
-
-          <div class="post_excerpt richtext">
-            <?php echo $excerpt; ?>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <?php
-
-    $counter++;
-  }
-  ?>
+  <?php include( locate_template( 'post-grid.php' ) ); ?>
 
 </div>
 

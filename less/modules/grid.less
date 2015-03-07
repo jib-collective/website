@@ -1,11 +1,17 @@
-.grid {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
+@import "../mixins.less";
 
-  &:after {
-    clear: both;
+.grid {
+  align-content: flex-start;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+
+  &_column {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
+
+.generate-grid( 1 );

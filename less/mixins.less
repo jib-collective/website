@@ -1,0 +1,7 @@
+.generate-grid( @index ) when ( @index <= 12 ) {
+  .grid_column--@{index} {
+    width: round( ( 100 / 12 ) * @index, 6 ) + 0%;
+  }
+
+  .generate-grid( @index + 1 );
+}

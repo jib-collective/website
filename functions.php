@@ -6,6 +6,7 @@
   add_image_size( 'gallery-image', 1024, 690 );
   add_image_size( 'category-image', 350 );
   add_image_size( 'custom-size', 220, 180 );
+  add_image_size( 'author-portrait', 200, 200 );
   set_post_thumbnail_size( 150, 150 );
 
   function register_my_menu() {

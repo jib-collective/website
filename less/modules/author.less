@@ -1,81 +1,82 @@
 .author {
-  &_list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  min-height: 220px;
+
+  & + & {
+    margin-top: 2em;
   }
 
-  &_image {
-    display: inline-block;
-    height: 150px;
+  &_link {
+    display: block;
+    outline: none;
+    padding-left: 220px;
     position: relative;
-    top: 5px;
-    vertical-align: top;
-    width: 150px;
+    text-decoration: none;
   }
 
-  &_data {
-    display: inline-block;
-    margin-left: 1.5em;
-    width: 47em;
-    vertical-align: top;
-  }
-
-  &_bio {
-    margin-bottom: 0;
-    margin-top: 0;
-
-    > p:first-child {
-      margin-top: 0;
-    }
+  &_link:hover &_title,
+  &_link:focus &_title {
+    text-decoration: underline;
   }
 
   &_title {
-    font-family: @font-family-sansserif;
-    font-size: 1.6em;
-    font-weight: normal;
-    margin: 0 0 .4em 0;
+    margin-top: 0;
+  }
+
+  &_image {
+    background-color: white;
+    box-shadow: 0px 0px .2rem #E8E8E8;
+    left: 0;
+    margin-top: -.3rem;
+    padding: .3rem;
+    position: absolute;
+    top: 0;
+  }
+
+  &_bio {
+    margin-left: 220px;
+  }
+
+  &_block-headline {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+
+  &--full {
+    position: relative;
   }
 
   &_contact {
-    font-size: 1.1em;
     list-style: none;
     margin: 0;
     padding: 0;
 
-    a:hover,
-    a:focus {
-      text-decoration: underline;
+    > li {
+      padding: .2rem 0;
     }
 
-    .fa {
-      margin-right: .3em;
+    a {
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
     }
   }
 
   &_contact-domain {
-    color: darken( @base-text-color, 50% );
+    color: #777;
+    font-weight: normal;
+  }
+
+  &_service-icon {
+    margin-right: .2rem;
+    vertical-align: middle;
+    width: 20px;
   }
 
   &_contact-margin-top {
-    margin-top: 1.5em;
-  }
-
-  &_contact > li {
-    margin-bottom: .45em;
-  }
-
-  & + & {
-    border-top: 1px solid lighten( @base-color, 5% );
-    margin-top: 1.5em;
-    padding-top: 1.5em;
-  }
-
-  &--full &_data + .page_headline {
-    margin-top: 3em;
-  }
-
-  &:hover &_title {
-    text-decoration: underline;
+    margin-top: 1em;
   }
 }

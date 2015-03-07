@@ -7,13 +7,15 @@
   $video_embed_code = wp_oembed_get( $video_url, array( 'width' => '960px' ) );
 ?>
 
+<div class="video">
+  <?php
+    echo $video_embed_code;
+  ?>
+</div>
+
 <h1 class="page_headline">
   <?php echo $post_title; ?>
 </h1>
-
-<?php
-  echo $video_embed_code;
-?>
 
 <div class="richtext richtext--full-content">
   <?php

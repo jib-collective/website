@@ -1,46 +1,43 @@
 .header {
-  height: 8em;
-  position: relative;
-
-  > .app_content-limiter {
-    height: 100%;
-    position: relative;
-  }
-
-  &_logo {
-    bottom: -7px;
-    left: -120px;
-    position: absolute;
-  }
-
-  &_logo > a {
-    display: block;
-  }
-
-  &_logo-image {
-    display: block;
-    height: 135px;
-  }
+  background-color: #1A1A1A;
+  height: 100%;
+  left: 0;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 14rem;
 
   &_menu {
     list-style: none;
-    margin: 5.9em 0 0 0;
+    margin: 0;
     padding: 0;
-    float: right;
+
+    > li + li {
+      border-top: 1px solid lighten( #202020, 10% );
+    }
+
+    a {
+      color: white;
+      display: block;
+      font-size: 1.05rem;
+      padding: .9em;
+      text-align: right;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
   }
 
-  &_menu > li {
-    display: inline-block;
-  }
+  &_logo {
+    margin: -1rem -.2rem 2rem -.2rem;
 
-  &_menu > li > a {
-    font-family: @font-family-serif;
-    font-size: 1.3em;
-    margin: 0 .5em;
-    padding: .6em .4em .3em .4em;
-  }
-
-  &_menu > .current-menu-item > a {
-    border-bottom: 2px solid @base-text-color;
+    &-image {
+      height: auto;
+      margin: 0 auto;
+      width: 100%;
+    }
   }
 }

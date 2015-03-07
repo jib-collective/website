@@ -1,11 +1,8 @@
 {
   "name": "Jib-Collective",
   "version": "0.0.1",
-  "description": "jib-collective ==============",
+  "description": "jib-collective",
   "main": "index.php",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/gustavpursche/jib-collective.git"

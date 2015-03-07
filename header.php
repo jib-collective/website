@@ -1,42 +1,59 @@
-<!doctype html />
-
 <?php
-  $pagetitle = wp_title( '', false );
+  $page_title = wp_title( '', false );
+  $page_description = get_bloginfo( 'description' );
+  $css_directory = get_bloginfo( 'template_directory' );
 
-  if( !$pagetitle ) {
-    $pagetitle = 'jib-collective';
+  if( !$page_title ) {
+    $page_title = 'jib-collective';
   } else {
-    $pagetitle .= " | jib-collective";
+    $page_title .= " | jib-collective";
+  }
+
+  if(  is_single() || is_page() ) {
+    $post = get_post();
+    $page_description = get_field( 'excerpt', $post->ID );
   }
 ?>
 
+<!doctype html />
+
 <html>
   <head>
-    <title><?php echo $pagetitle; ?></title>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
+    <title><?php echo $page_title; ?></title>
+    <link rel="stylesheet"
+          href="<?php bloginfo('stylesheet_url'); ?>" />
     <meta charset="utf-8" />
+
+    <?php
+      if( $page_description ) {
+    ?>
+
+      <meta name="description"
+            content="<?php echo wp_strip_all_tags( $page_description ); ?>" />
+
+    <?php
+      }
+    ?>
+
   </head>
 <body>
 
 <div class="page">
-  <header class="header grid">
-    <div class="app_content-limiter">
-      <div class="header_logo">
-        <?php if( !is_home() ) { ?>
-          <a href="/">
-        <?php } ?>
+  <header class="header">
+    <div class="header_logo">
+      <?php if( !is_home() ) { ?>
+        <a href="/">
+      <?php } ?>
 
-          <img class="header_logo-image"
-               src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" />
+        <img class="header_logo-image"
+             src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" />
 
-        <?php if( !is_home() ) { ?>
-          </a>
-        <?php } ?>
-      </div>
-
-      <?php wp_nav_menu(array( "container" => '',
-                               "menu_class" => 'header_menu' )); ?>
+      <?php if( !is_home() ) { ?>
+        </a>
+      <?php } ?>
     </div>
+
+    <?php wp_nav_menu(array( "container" => '',
+                             "menu_class" => 'header_menu' )); ?>
   </header>
   <div class="main">

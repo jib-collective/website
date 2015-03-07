@@ -5,22 +5,10 @@
   "authors": [
     "Gustav Pursche <gustavpursche@gmail.com>"
   ],
-  "main": "index.php",
-  "moduleType": [
-    "amd",
-    "globals"
-  ],
-  "license": "GNU",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
     "normalize.css": "~3.0.1",
     "jquery": "~2.1.1",
-    "slick-carousel": "~1.4.0"
-  }
+    "slick.js": "~1.4.1"
+  },
+  "private": true
 }

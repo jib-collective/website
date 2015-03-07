@@ -8,8 +8,6 @@
   }
 ?>
 
-<div class="grid app_content-limiter">
-  <?php get_template_part( 'content', $post_format ); ?>
-</div>
+<?php get_template_part( 'content', $post_format ); ?>
 
 <?php get_footer(); ?>

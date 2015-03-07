@@ -1,11 +1,43 @@
-.slick-slide {
-  background-color: @base-color;
-}
+.slider {
+  background-color: white;
+  box-shadow: 0px 0px .2rem #E8E8E8;
+  margin-bottom: 1rem;
+  max-width: 50rem;
+  padding: .3rem;
 
-.slick-slide img {
-  margin: 0 auto;
-}
+  img {
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+  }
 
-.slider.slick-slider {
-  margin-bottom: -2em;
+  .slick {
+    &-slide {
+      height: auto;
+    }
+
+    &-slider {
+      margin: 0;
+    }
+
+    &-prev,
+    &-next {
+      height: 100%;
+      top: 0;
+      width: 50%;
+      z-index: 100;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    &-next {
+      right: 0;
+    }
+
+    &-prev {
+      left: 0;
+    }
+  }
 }
