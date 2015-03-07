@@ -6,7 +6,7 @@
                                'post_status' => 'publish',
                         ) );
 
-  $FEATURED_POSITIONS = array( 1, 4, 8, 11, );
+  $FEATURED_POSITIONS = array( 1, 4, 8, 11, 14 );
 ?>
 
 <?php include( locate_template( 'post-grid.php' ) ); ?>
