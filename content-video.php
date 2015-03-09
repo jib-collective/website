@@ -7,7 +7,7 @@
   $video_embed_code = wp_oembed_get( $video_url, array( 'width' => '960px' ) );
 ?>
 
-<div class="video">
+<div class="page_video">
   <?php
     echo $video_embed_code;
   ?>

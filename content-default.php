@@ -4,6 +4,22 @@
   $post_title = $post->post_title;
 ?>
 
+<?php
+  if ( has_post_thumbnail() ) {
+?>
+
+  <div class="page_image">
+
+    <?php
+        the_post_thumbnail( 'large' );
+    ?>
+
+  </div>
+
+<?php
+  }
+?>
+
 <h1 class="page_headline">
   <?php echo $post_title; ?>
 </h1>
@@ -11,12 +27,6 @@
 <div class="page_authors">
   <?php echo render_author_list( $post ); ?>
 </div>
-
-<?php
-  if ( has_post_thumbnail() ) {
-    the_post_thumbnail( 'large' );
-  }
-?>
 
 <div class="richtext richtext--full-content">
   <?php
