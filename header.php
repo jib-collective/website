@@ -59,7 +59,7 @@
 
 
     <div class="header_menu-social">
-      &copy; <?php echo date("Y"); ?>, Follow us
+      &copy; <?php echo date("Y"); ?>
       <?php wp_nav_menu(array( "theme_location" => "header-social",
                                "container" => "", )); ?>
     </div>
