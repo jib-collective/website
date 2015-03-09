@@ -12,7 +12,7 @@
   }
 
   &_headline + &_authors {
-    margin-top: -1rem;
+    margin-top: -.7rem;
   }
 
   &_authors {
@@ -25,6 +25,15 @@
 
     li {
       display: inline-block;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
     }
   }
 }
