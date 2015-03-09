@@ -57,9 +57,12 @@
                              "container" => '',
                              "menu_class" => 'header_menu' )); ?>
 
-    <strong class="header_menu-headline">Follow Us</strong>
-    <?php wp_nav_menu(array( "theme_location" => "header-social",
-                             "container" => "",
-                             "menu_class" => "header_menu header_menu--social" )); ?>
+
+    <div class="header_menu-social">
+      &copy; <?php echo date("Y"); ?>, Follow us
+      <?php wp_nav_menu(array( "theme_location" => "header-social",
+                               "container" => "", )); ?>
+    </div>
+
   </header>
   <div class="main">
