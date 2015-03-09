@@ -36,7 +36,29 @@
     ?>
 
   </head>
-<body>
+
+<?php
+  $background = '';
+
+  if( is_page() ) {
+    $page_id = $post->ID;
+    $background_image_url = get_field( 'background-image', $page_id );
+
+
+
+    if( $background_image_url ) {
+      $background = $background_image_url;
+    }
+  }
+?>
+
+<body
+  <?php
+  if( $background ) {
+    echo 'style="background-image: url(' . $background . ')";';
+  }
+  ?>
+>
 
 <div class="page">
   <header class="header">
@@ -65,4 +87,7 @@
     </div>
 
   </header>
+
+
+
   <div class="main">
