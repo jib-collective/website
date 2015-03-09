@@ -8,6 +8,10 @@
   <?php echo $post_title; ?>
 </h1>
 
+<div class="page_authors">
+  <?php echo render_author_list( $post ); ?>
+</div>
+
 <?php
   if ( has_post_thumbnail() ) {
     the_post_thumbnail( 'large' );

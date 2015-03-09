@@ -17,6 +17,10 @@
   <?php echo $post_title; ?>
 </h1>
 
+<div class="page_authors">
+  <?php echo render_author_list( $post ); ?>
+</div>
+
 <div class="richtext richtext--full-content">
   <?php
     echo apply_filters( 'the_content', $post->post_content );

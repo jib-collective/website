@@ -56,28 +56,6 @@
               <?php echo $post_title; ?>
             </h2>
 
-            <!--
-            <div class="post_authors">
-              <?php
-                $author_id = get_the_author_meta( 'ID' );
-                $coauthors = get_coauthors( $post->ID );
-
-                foreach( $coauthors as $coauthor ) {
-                  $coauthor_id = $coauthor->ID;
-
-                  $coauthor_meta = get_user_meta( $coauthor_id );
-                  $coauthor_link = get_author_posts_url( $coauthor_id );
-                  $coauthor_name = $coauthor_meta[ 'first_name' ][ 0 ];
-              ?>
-
-              <span><?php echo $coauthor_name; ?></span>,&nbsp;
-
-              <?php
-                }
-              ?>
-            </div>
-            -->
-
             <div class="post_excerpt richtext">
               <?php echo $post_excerpt; ?>
             </div>

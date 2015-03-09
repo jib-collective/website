@@ -25,6 +25,37 @@
       $query-> query_vars[ 'post__not_in' ] = array( 49, 43 );
   }
 
+  function render_author_list( $post ) {
+    $buffer = '<span>by&nbsp;</span><ul>';
+    $coauthors = get_coauthors( $post->ID );
+    $counter = 0;
+
+    foreach( $coauthors as $coauthor ) {
+      $coauthor_id = $coauthor->ID;
+      $name = $coauthor->display_name;
+      $coauthor_link = get_author_posts_url( $coauthor_id );
+      $comma = ',&nbsp;';
+      $link = '<a href="' . $coauthor_link . '">' .
+                $name .
+              '</a>';
+
+
+      if( $counter == 0 ) {
+        $comma = '';
+      }
+
+      if( $coauthor->type == 'guest-author' ) {
+        $link = '<span>' . $name . '</span>';
+      }
+
+      $buffer .= '<li>' . $comma . $link . '</li>';
+      $counter += 1;
+    }
+
+    $buffer .= '</ul>';
+    return $buffer;
+  }
+
   add_action( 'init', 'register_my_menu' );
   add_filter( 'parse_query', 'exclude_pages_from_admin' );
 ?>
