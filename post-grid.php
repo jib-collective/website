@@ -1,4 +1,4 @@
-<div class="grid">
+<div class="grid post-grid">
   <?php
     $counter = 1;
 
@@ -36,7 +36,7 @@
                                               );
   ?>
 
-    <div class="grid_column grid_column--<?php echo $column_type; ?>">
+    <div class="grid_column grid_column--<?php echo $column_type; ?> post-grid_column--<?php echo $column_type; ?>">
       <div class="post <?php echo $featured_css_class; ?>">
         <a href="<?php echo $post_url ?>">
           <?php

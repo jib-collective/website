@@ -63,3 +63,33 @@
     padding-top: 0;
   }
 }
+
+@media only screen and ( max-width: 1023px ) {
+  .post {
+    &_excerpt {
+      font-size: .9rem;
+    }
+  }
+}
+
+@media only screen and ( max-width: 550px ) {
+  .post {
+    &--featured &_headline {
+      color: #333;
+      font-size: 1.5rem;
+      font-weight: 400;
+      padding: .6rem 1rem;
+    }
+
+    &--featured &_meta {
+      background: transparent;
+      padding: 0;
+      position: static;
+    }
+
+    &--featured &_excerpt {
+      color: #333;
+      font-family: Arial;
+    }
+  }
+}
