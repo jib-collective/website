@@ -2,13 +2,47 @@
   background-color: white;
   box-shadow: 0px 0px .2rem #E8E8E8;
   margin-bottom: 1rem;
-  max-width: 42rem;
+  max-width: 54rem;
   padding: .3rem;
 
   img {
     height: auto;
     margin: 0 auto;
     max-width: 100%;
+  }
+
+  &_external-control {
+    margin-bottom: .5rem;
+    margin-top: .3rem;
+    max-width: 54rem;
+    text-align: right;
+  }
+
+  &_next-button,
+  &_previous-button {
+    background-color: white;
+    border: none;
+    box-shadow: 0px 0px .2rem #E8E8E8;
+    font-size: .8rem;
+    padding: .5rem;
+
+    img {
+      line-height: 1;
+      vertical-align: middle;
+      width: 15px;
+    }
+  }
+
+  &_next-button {
+    img {
+      margin-left: .4rem;
+    }
+  }
+
+  &_previous-button {
+    img {
+      margin-right: .4rem;
+    }
   }
 
   .slick {

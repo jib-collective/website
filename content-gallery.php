@@ -5,7 +5,17 @@
   $images = get_field( 'images', $post_id );
 ?>
 
+<div class="slider_external-control">
+  <button class="slider_previous-button">
+    <img src="<?php bloginfo( 'template_directory' ); ?>/images/arrow-left.svg"> Previous </button>
+
+  <button class="slider_next-button">
+    Next <img src="<?php bloginfo( 'template_directory' ); ?>/images/arrow-right.svg"></button>
+</div>
+
 <div class="slider">
+
+
   <div class="slider_container">
     <?php
       foreach( $images as $index => $image ) {
@@ -60,5 +70,18 @@
       infinite: true,
       speed: 200,
     });
+
+    /* Custom Controls */
+    $( '.slider_previous-button' )
+      .on( 'click', function( e ) {
+        e.preventDefault();
+        $( '.slider_container' ).slick( 'prev' );
+      });
+
+    $( '.slider_next-button' )
+      .on( 'click', function( e ) {
+        e.preventDefault();
+        $( '.slider_container' ).slick( 'next' );
+      });
   })
 </script>
