@@ -81,13 +81,54 @@
 
 
     <div class="header_menu-social">
-      &copy; <?php echo date("Y"); ?>
-      <?php wp_nav_menu(array( "theme_location" => "header-social",
-                               "container" => "", )); ?>
+      &copy; <?php echo date( "Y" ); ?>
+      <?php
+
+        // find out menu ID
+        $menu_slug = "header-social";
+        $locations = get_nav_menu_locations();
+        $MENU_ITEMS = wp_get_nav_menu_items( $locations[ $menu_slug ] );
+        $TEMPLATE_DICRECTORY = get_bloginfo( 'template_directory' );
+
+        echo '<ul class="menu" id="menu-header-social">';
+
+        foreach ( $MENU_ITEMS as $index => $item ) {
+          echo '<li class="menu-item">';
+
+          $has_images = [ 'twitter',
+                          'vimeo',
+                        ];
+
+          $index = strtolower( $item->title );
+
+          if( in_array( $index, $has_images ) ) {
+            $image = '<img src="' .
+                         $TEMPLATE_DICRECTORY .
+                         '/images/' .
+                         $index .
+                         '-white.svg"' .
+                         'class="header_menu-social-image"' .
+                      ' />';
+          }
+
+          echo '<a href="' . $item->url . '">';
+            if( isset( $image ) ) {
+              echo $image;
+              echo '<span class="u-is-accessible-hidden">' .
+                     $item->title .
+                   '</span>';
+            } else {
+              echo $item->title;
+            }
+          echo '</a>';
+
+          echo '</li>';
+        }
+
+        echo "</ul>";
+      ?>
     </div>
 
   </header>
-
-
 
   <div class="main">
