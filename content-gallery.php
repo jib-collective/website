@@ -23,8 +23,35 @@
       <div>
         <?php
           $image_id = $image[ 'ID' ];
+          $metadata = wp_get_attachment_metadata( $image_id );
+          $metadata_title = $metadata[ 'image_meta' ][ 'title' ];
+          $metadata_caption = $metadata[ 'image_meta' ][ 'caption' ];
+
+          if( $metadata_title || $metadata_caption ) {
+            echo '<figure>';
+          }
 
           echo wp_get_attachment_image( $image_id, 'gallery-image' );
+
+          if( $metadata_title || $metadata_caption ) {
+            echo '<figcaption class="slider_caption">';
+          }
+
+          if( $metadata_title ) {
+            echo '<strong>' . $metadata_title . '</strong>';
+          }
+
+          if( $metadata_caption ) {
+            echo '<p>' . $metadata_caption . '</p>';
+          }
+
+          if( $metadata_title || $metadata_caption ) {
+            echo '</figcaption>';
+          }
+
+          if( $metadata_title || $metadata_caption ) {
+            echo '</figure>';
+          }
         ?>
       </div>
     <?php
