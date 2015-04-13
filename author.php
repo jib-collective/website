@@ -112,7 +112,7 @@
           <a href="http://<?php echo $tumblr; ?>.tumblr.com">
             <img class="author_service-icon"
                  src="<?php bloginfo( 'template_directory' ); ?>/images/tumblr.svg" />
-            <?php echo $tumblr; ?><span class="author_contact-domain u-is-accessible-hidden">.tumblr.com</span>
+            <span class="u-is-accessible-hidden"><?php echo $tumblr; ?></span><span class="author_contact-domain u-is-accessible-hidden">.tumblr.com</span>
           </a>
         </li>
       <?php } ?>
@@ -122,7 +122,7 @@
           <a href="http://vimeo.com/<?php echo $vimeo; ?>">
             <img class="author_service-icon"
                  src="<?php bloginfo( 'template_directory' ); ?>/images/vimeo.svg" />
-            <span class="author_contact-domain u-is-accessible-hidden">vimeo.com/</span><?php echo $vimeo; ?>
+            <span class="author_contact-domain u-is-accessible-hidden">vimeo.com/</span><span class="u-is-accessible-hidden"><?php echo $vimeo; ?></span>
           </a>
         </li>
       <?php } ?>
