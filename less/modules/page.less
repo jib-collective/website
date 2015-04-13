@@ -50,12 +50,16 @@
   }
 
   &_video {
-    height: 0;
-    margin-bottom: 2rem;
     max-width: 42rem;
-    padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 25px;
-    position: relative;
+
+    &-container {
+      height: 0;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+      position: relative;
+    }
 
     iframe {
       position: absolute;

@@ -8,9 +8,11 @@
 ?>
 
 <div class="page_video">
-  <?php
-    echo $video_embed_code;
-  ?>
+  <div class="page_video-container">
+    <?php
+      echo $video_embed_code;
+    ?>
+  </div>
 </div>
 
 <h1 class="page_headline">
