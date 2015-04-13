@@ -95,10 +95,7 @@
         foreach ( $MENU_ITEMS as $index => $item ) {
           echo '<li class="menu-item">';
 
-          $has_images = [ 'twitter',
-                          'vimeo',
-                        ];
-
+          $has_images = array( 'twitter', 'vimeo' ];
           $index = strtolower( $item->title );
 
           if( in_array( $index, $has_images ) ) {
