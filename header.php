@@ -54,9 +54,9 @@
 
 <body
   <?php
-  if( $background ) {
-    echo 'style="background-image: url(' . $background . ')";';
-  }
+    if( $background ) {
+      echo 'style="background-image: url(' . $background . ');"';
+    }
   ?>
 >
 
