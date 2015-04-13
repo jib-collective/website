@@ -48,7 +48,7 @@
 </div>
 
 <script type="text/javascript"
-        src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        src="<?php bloginfo( 'template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
 
 <link rel="stylesheet"
       type="text/css"
