@@ -49,10 +49,10 @@
       <?php echo apply_filters( 'the_content', $bio[0] ); ?>
     </div>
 
-    <h2>Contact</h2>
+    <h2 class="u-is-accessible-hidden">Contact</h2>
     <ul class="author_contact">
       <?php if( $email ) { ?>
-        <li>
+        <li class="author_contact-item--block">
           <span>Email: </span>
           <a href="mailto: <?php echo $email; ?>">
             <?php echo $email; ?>
@@ -69,7 +69,7 @@
       <?php } ?>
 
       <?php if( $telephone ) { ?>
-        <li>
+        <li class="author_contact-item--block author_contact-item--margin-bottom">
           <span>Telephone: </span>
           <a href="tel: <?php echo $telephone; ?>">
             <?php echo $telephone; ?>
@@ -78,51 +78,51 @@
       <?php } ?>
 
       <?php if( $twitter ) { ?>
-        <li class="author_contact-margin-top">
+        <li class="author_contact-item">
           <a href="http://twitter.com/<?php echo $twitter; ?>">
             <img class="author_service-icon"
                  src="<?php bloginfo( 'template_directory' ); ?>/images/twitter.svg" />
-            <span class="author_contact-domain">twitter.com/</span><?php echo $twitter; ?>
+            <span class="author_contact-domain u-is-accessible-hidden">twitter.com/</span><span class="u-is-accessible-hidden"><?php echo $twitter; ?></span>
           </a>
         </li>
       <?php } ?>
 
       <?php if( $facebook ) { ?>
-        <li>
+        <li class="author_contact-item">
           <a href="http://facebook.com/<?php echo $facebook; ?>">
             <img class="author_service-icon"
                  src="<?php bloginfo( 'template_directory' ); ?>/images/facebook.svg" />
-            <span class="author_contact-domain">facebook.com/</span><?php echo $facebook; ?>
+            <span class="author_contact-domain u-is-accessible-hidden">facebook.com/</span><span class="u-is-accessible-hidden"><?php echo $facebook; ?></span>
           </a>
         </li>
       <?php } ?>
 
       <?php if( $skype ) { ?>
-        <li>
+        <li class="author_contact-item">
           <a href="skype:<?php echo $skype; ?>">
             <img class="author_service-icon"
                  src="<?php bloginfo( 'template_directory' ); ?>/images/skype.svg" />
-            <?php echo $skype; ?>
+            <span class="u-is-accessible-hidden"><?php echo $skype; ?></span>
           </a>
         </li>
       <?php } ?>
 
       <?php if( $tumblr ) { ?>
-        <li>
+        <li class="author_contact-item">
           <a href="http://<?php echo $tumblr; ?>.tumblr.com">
             <img class="author_service-icon"
                  src="<?php bloginfo( 'template_directory' ); ?>/images/tumblr.svg" />
-            <?php echo $tumblr; ?><span class="author_contact-domain">.tumblr.com</span>
+            <?php echo $tumblr; ?><span class="author_contact-domain u-is-accessible-hidden">.tumblr.com</span>
           </a>
         </li>
       <?php } ?>
 
       <?php if( $vimeo ) { ?>
-        <li>
+        <li class="author_contact-item">
           <a href="http://vimeo.com/<?php echo $vimeo; ?>">
             <img class="author_service-icon"
                  src="<?php bloginfo( 'template_directory' ); ?>/images/vimeo.svg" />
-            <span class="author_contact-domain">vimeo.com/</span><?php echo $vimeo; ?>
+            <span class="author_contact-domain u-is-accessible-hidden">vimeo.com/</span><?php echo $vimeo; ?>
           </a>
         </li>
       <?php } ?>
