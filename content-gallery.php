@@ -23,9 +23,9 @@
       <div>
         <?php
           $image_id = $image[ 'ID' ];
-          $metadata = wp_get_attachment_metadata( $image_id );
-          $metadata_title = $metadata[ 'image_meta' ][ 'title' ];
-          $metadata_caption = $metadata[ 'image_meta' ][ 'caption' ];
+          $metadata = get_post( $image_id );
+          $metadata_title = $metadata->post_title;
+          $metadata_caption = $metadata->post_content;
 
           if( $metadata_title || $metadata_caption ) {
             echo '<figure>';
