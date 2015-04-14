@@ -32,37 +32,7 @@
 
   &_image {
     height: auto;
-    min-height: 100%;
-    min-width: 100%;
-  }
-
-  &--featured {
-    position: relative;
-  }
-
-  &--featured &_headline {
-    background: transparent;
-    color: white;
-    font-size: 2rem;
-    font-weight: 400;
-    padding-bottom: .2rem;
-  }
-
-  &--featured &_meta {
-    background: linear-gradient( to bottom, transparent, rgba( 0, 0, 0, .6 ) );
-    bottom: 0;
-    padding: .6rem;
-    position: absolute;
-    left: 0;
     width: 100%;
-  }
-
-  &--featured &_excerpt {
-    color: white;
-    font-family: "Open sans";
-    font-weight: 300;
-    max-width: none;
-    padding-top: 0;
   }
 }
 
@@ -70,28 +40,6 @@
   .post {
     &_excerpt {
       font-size: .9rem;
-    }
-  }
-}
-
-@media only screen and ( max-width: 550px ) {
-  .post {
-    &--featured &_headline {
-      color: #333;
-      font-size: 1.5rem;
-      font-weight: 400;
-      padding: .6rem 1rem;
-    }
-
-    &--featured &_meta {
-      background: transparent;
-      padding: 0;
-      position: static;
-    }
-
-    &--featured &_excerpt {
-      color: #333;
-      font-family: Arial;
     }
   }
 }
