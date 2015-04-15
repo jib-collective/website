@@ -138,21 +138,4 @@
 
 </div>
 
-<script type="text/javascript"
-        src="<?php bloginfo( 'template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $( '.js--toggle-pgp' )
-      .on( 'click', function( e ) {
-        e.preventDefault();
-
-        $( this )
-          .parent()
-          .next( '.pgp' )
-          .toggleClass( 'u-is-hidden' );
-      });
-  });
-</script>
-
 <?php get_footer(); ?>
