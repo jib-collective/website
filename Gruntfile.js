@@ -5,18 +5,49 @@ module.exports = function ( grunt ) {
     less: {
       dev: {
         options: {
-          paths: [ "less/" ]
+          paths: [ 'less/' ]
         },
         files: {
-          "style.css": "less/jib.less"
+          'style.css': 'less/jib.less',
         }
       }
     },
 
+    requirejs: {
+      dist: {
+        options: {
+          baseUrl: 'js',
+          name: 'main',
+          mainConfigFile: 'js/main.js',
+          out: 'js/dist/main.js',
+          optimize: 'uglify2',
+          paths: {
+            requireLib: 'components/requirejs/require',
+          },
+          include: [
+            'requireLib',
+          ],
+          uglify2: {
+            output: {
+              beautify: false,
+            },
+          }
+        },
+      },
+    },
+
     watch: {
-      scripts: {
+      less: {
         files: [ 'less/**/*.less' ],
-        tasks: [ 'less', 'concat' ],
+        tasks: [ 'less', 'concat', ],
+        options: {
+          spawn: false,
+        },
+      },
+
+      js: {
+        files: [ 'js/*.js' ],
+        tasks: [ 'requirejs', ],
         options: {
           spawn: false,
         },

@@ -74,41 +74,10 @@
   ?>
 </div>
 
-<script type="text/javascript"
-        src="<?php bloginfo( 'template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
-
 <link rel="stylesheet"
       type="text/css"
-      href="<?php bloginfo( 'template_directory'); ?>/bower_components/slick.js/slick/slick.css" />
+      href="<?php bloginfo( 'template_directory'); ?>/js/components/slick.js/slick/slick.css" />
 
 <link rel="stylesheet"
      type="text/css"
-     href="<?php bloginfo( 'template_directory'); ?>/bower_components/slick.js/slick/slick-theme.css" />
-
-<script type="text/javascript"
-        src="<?php bloginfo( 'template_directory'); ?>/bower_components/slick.js/slick/slick.js"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $( '.slider_container' ).slick({
-      adaptiveHeight: true,
-      slidesToShow: 1,
-      fade: true,
-      infinite: true,
-      speed: 200,
-    });
-
-    /* Custom Controls */
-    $( '.slider_previous-button' )
-      .on( 'click', function( e ) {
-        e.preventDefault();
-        $( '.slider_container' ).slick( 'prev' );
-      });
-
-    $( '.slider_next-button' )
-      .on( 'click', function( e ) {
-        e.preventDefault();
-        $( '.slider_container' ).slick( 'next' );
-      });
-  })
-</script>
+     href="<?php bloginfo( 'template_directory'); ?>/js/components/slick.js/slick/slick-theme.css" />
