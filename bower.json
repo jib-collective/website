@@ -10,7 +10,8 @@
     "jquery": "~2.1.1",
     "slick.js": "~1.5.0",
     "requirejs": "~2.1.17",
-    "modernizr": "~2.8.3"
+    "modernizr": "~2.8.3",
+    "webfontloader": "~1.5.17"
   },
   "private": true
 }

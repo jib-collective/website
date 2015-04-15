@@ -4,6 +4,7 @@ requirejs.config({
     jquery: 'components/jquery/dist/jquery',
     modernizr: 'components/modernizr/modernizr',
     slick: 'components/slick.js/slick/slick',
+    webfontloader: 'components/webfontloader/webfontloader',
   },
   shim: {
     'Modernizr': {
@@ -12,8 +13,23 @@ requirejs.config({
 
     'jquery': {
       exports: '$',
+    },
+
+    'webfontloader': {
+      exports: 'WebFont',
     }
   },
+});
+
+require( [ 'webfontloader' ], function( WebFont ) {
+
+  WebFont.load({
+    classes: false,
+    google: {
+      families: [ 'Open+Sans:400,300:latin' ],
+    }
+  });
+
 });
 
 /* Check for Flexbox-Support and provide fallback Layout */
