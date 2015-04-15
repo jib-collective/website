@@ -30,7 +30,7 @@ require( [ 'jquery', ], function( $ ) {
 
       if( supportsFlexbox ) {
         require( [ 'utils/loadCSS', ], function( loadCSS ) {
-          loadCSS( 'flexbox-fallback' );
+          loadCSS( 'fallback-layout' );
         });
       }
     });

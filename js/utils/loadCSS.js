@@ -4,7 +4,7 @@ define(function() {
 
     link.type = 'text/css';
     link.rel = 'stylesheet';
-    link.href = fragment + '.css';
+    link.href = '/css/' + fragment + '.css';
     document.getElementsByTagName( 'head' )[ 0 ].appendChild( link );
   };
 

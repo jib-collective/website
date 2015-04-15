@@ -24,7 +24,7 @@
       })();
     </script>
 
-    <script src="<?php bloginfo( 'template_url' ); ?>/js/dist/main.js"
+    <script src="/js/dist/main.js"
             async
             defer></script>
 

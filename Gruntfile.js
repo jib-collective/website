@@ -1,5 +1,5 @@
 module.exports = function ( grunt ) {
-  require('load-grunt-tasks')( grunt );
+  require( 'load-grunt-tasks' )( grunt );
 
   grunt.initConfig({
     less: {
@@ -8,7 +8,8 @@ module.exports = function ( grunt ) {
           paths: [ 'less/' ]
         },
         files: {
-          'style.css': 'less/jib.less',
+          'css/dev/style.css': 'less/jib.less',
+          'css/fallback-layout.css': 'less/fallback-layout.less',
         }
       }
     },
@@ -56,14 +57,15 @@ module.exports = function ( grunt ) {
 
     concat: {
       dev: {
-        src: [ 'bower_components/normalize.css/normalize.css',
-               'style.css' ],
-        dest: 'style.css',
+        src: [ 'js/components/normalize.css/normalize.css',
+               'css/dev/style.css' ],
+        dest: 'css/style.css',
       },
     },
   });
 
   grunt.registerTask('compile', [ 'less',
-                                  'concat' ]);
+                                  'concat',
+                                  'requirejs', ]);
 };
 

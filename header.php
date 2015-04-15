@@ -21,7 +21,7 @@
   <head>
     <title><?php echo $page_title; ?></title>
     <link rel="stylesheet"
-          href="<?php bloginfo('stylesheet_url'); ?>" />
+          href="/css/style.css" />
     <meta charset="utf-8" />
 
     <?php
