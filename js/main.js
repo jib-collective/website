@@ -19,9 +19,9 @@ requirejs.config({
 /* Check for Flexbox-Support and provide fallback Layout */
 require( [ 'jquery', ], function( $ ) {
   $(function() {
-    var $postGrid = $( '.post-grid' );
+    var $grid = $( '.grid' );
 
-    if( !$postGrid.length ) {
+    if( !$grid.length ) {
       return;
     }
 

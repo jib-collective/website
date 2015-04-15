@@ -1,14 +1,6 @@
       </div>
     </div>
 
-    <footer class="footer">
-      <div class="footer_menu-social">
-        &copy; <?php echo date("Y"); ?>
-        <?php wp_nav_menu(array( "theme_location" => "header-social",
-                                 "container" => "", )); ?>
-      </div>
-    </footer>
-
     <script type="text/javascript">
       WebFontConfig = {
         google: { families: [ 'Open+Sans:400,300:latin' ] }
