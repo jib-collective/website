@@ -28,7 +28,7 @@ require( [ 'jquery', ], function( $ ) {
     require( [ 'modernizr', ], function() {
       var supportsFlexbox = Modernizr.flexbox && Modernizr.flexboxlegacy;
 
-      if( supportsFlexbox ) {
+      if( !supportsFlexbox ) {
         require( [ 'utils/loadCSS', ], function( loadCSS ) {
           loadCSS( 'fallback-layout' );
         });
