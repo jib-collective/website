@@ -5,6 +5,7 @@
   $images = get_field( 'images', $post_id );
   $post_alt_title = get_field( 'alternative_title', $post_id );
   $post_excerpt = get_field( 'excerpt', $post_id );
+  $post_capture_date = get_field( 'capture_date', $post_id );
 ?>
 
 <div class="slider_external-control">
@@ -68,6 +69,20 @@
 
 <div class="page_authors">
   <?php echo render_author_list( $post ); ?>
+
+  <?php
+    if( $post_capture_date ) {
+  ?>
+
+    <p class="page_pubdate"> - <?php echo $post_capture_date; ?></p>
+
+  <?php
+    }
+  ?>
+
+  <?php
+    echo render_post_locations( $post_id );
+  ?>
 </div>
 
 <div class="richtext richtext--full-content page_excerpt">

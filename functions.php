@@ -61,8 +61,6 @@
     $publications = get_field( 'publications', $post_id );
     $buffer = '';
 
-
-
     if( $publications ) {
       $buffer .= '<h3>Publications</h3>';
       $buffer .= '<ul class="page_publications">';
@@ -87,6 +85,24 @@
 
         $buffer .= '</li>';
     	}
+
+      $buffer .= '</ul>';
+    }
+
+    return $buffer;
+  }
+
+  function render_post_locations( $post_id ) {
+    $locations = get_field( 'post_locations', $post_id );
+    $buffer = '';
+
+    if( $locations ) {
+      $buffer .= ' in <ul class="page_locations">';
+
+      foreach( $locations as $location ) {
+        $buffer .= $location[ 'location' ];
+        $buffer .= '</li>';
+      }
 
       $buffer .= '</ul>';
     }

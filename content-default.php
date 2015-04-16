@@ -57,21 +57,25 @@
 
 <div class="page_authors">
   <?php echo render_author_list( $post ); ?>
+
+  <?php
+    if( $post_capture_date ) {
+  ?>
+
+    <p class="page_pubdate"> - <?php echo $post_capture_date; ?></p>
+
+  <?php
+    }
+  ?>
+
+  <?php
+    echo render_post_locations( $post_id );
+  ?>
 </div>
 
 <div class="richtext richtext--full-content page_excerpt">
   <?php echo $post_excerpt; ?>
 </div>
-
-<?php
-  if( $post_capture_date ) {
-?>
-
-  <p class="page_pubdate"><?php echo $post_capture_date; ?>></p>
-
-<?php
-  }
-?>
 
 <?php
   if( $post_alt_title ) {
