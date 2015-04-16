@@ -22,7 +22,7 @@
     <title><?php echo $page_title; ?></title>
     <link rel="stylesheet"
           href="/css/style.css" />
-    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1" />
 
     <?php
       if( $page_description ) {
