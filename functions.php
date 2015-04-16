@@ -62,6 +62,7 @@
     $buffer = '';
 
     if( $publications ) {
+      $buffer .= '<div class="richtext richtext--full-content">';
       $buffer .= '<p class="page_publications">';
       $buffer .= 'Published in ';
       $counter = 0;
@@ -91,6 +92,7 @@
     	}
 
       $buffer .= '</p>';
+      $buffer .= '</div>';
     }
 
     return $buffer;
