@@ -57,6 +57,43 @@
     return $buffer;
   }
 
+  function render_post_publications( $post_id ) {
+    $publications = get_field( 'publications', $post_id );
+    $buffer = '';
+
+
+
+    if( $publications ) {
+      $buffer .= '<h3>Publications</h3>';
+      $buffer .= '<ul class="page_publications">';
+
+    	foreach( $publications as $publication ) {
+        $title = $publication[ 'publication_title' ];
+        $link = $publication[ 'publication_link' ];
+        $date = $publication[ 'publication_date' ];
+
+        $buffer .= '<li>';
+          if( $link ) {
+            $buffer .= '<a href="' . $link . '">';
+            $buffer .= $title;
+            $buffer .= '</a>';
+          } else {
+            $buffer .= $title;
+          }
+
+          if( $date ) {
+            $buffer .= ' on ' . $date;
+          }
+
+        $buffer .= '</li>';
+    	}
+
+      $buffer .= '</ul>';
+    }
+
+    return $buffer;
+  }
+
   add_action( 'init', 'register_my_menu' );
   add_filter( 'parse_query', 'exclude_pages_from_admin' );
 ?>

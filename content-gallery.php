@@ -3,6 +3,8 @@
   $post_id = $post->ID;
   $post_title = $post->post_title;
   $images = get_field( 'images', $post_id );
+  $post_alt_title = get_field( 'alternative_title', $post_id );
+  $post_excerpt = get_field( 'excerpt', $post_id );
 ?>
 
 <div class="slider_external-control">
@@ -68,11 +70,25 @@
   <?php echo render_author_list( $post ); ?>
 </div>
 
+<div class="richtext richtext--full-content page_excerpt">
+  <?php echo $post_excerpt; ?>
+</div>
+
+<?php
+  if( $post_alt_title ) {
+    echo '<h2>' . $post_alt_title . '</h2>';
+  }
+?>
+
 <div class="richtext richtext--full-content">
   <?php
     echo apply_filters( 'the_content', $post->post_content );
   ?>
 </div>
+
+<?php
+  echo render_post_publications( $post_id );
+?>
 
 <link rel="stylesheet"
       type="text/css"
