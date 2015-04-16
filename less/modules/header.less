@@ -117,3 +117,27 @@
     }
   }
 }
+
+@media only screen and ( max-width: 450px ) {
+  .header {
+    &_logo {
+      width: 5rem;
+    }
+
+    &_menu a {
+      padding: .3rem;
+    }
+  }
+}
+
+@media only screen and ( max-width: 320px ) {
+  .header {
+    &_logo {
+      display: none;
+    }
+
+    &_menu {
+      float: none;
+    }
+  }
+}
