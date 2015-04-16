@@ -5,6 +5,7 @@
   $images = get_field( 'images', $post_id );
   $post_alt_title = get_field( 'alternative_title', $post_id );
   $post_excerpt = get_field( 'excerpt', $post_id );
+  $post_below_excerpt = get_field( 'below_excerpt', $post_id );
   $post_capture_date = get_field( 'capture_date', $post_id );
 ?>
 
@@ -90,6 +91,20 @@
 </div>
 
 <?php
+  if( $post_below_excerpt ) {
+?>
+
+  <div class="richtext richtext--full-content">
+    <?php echo $post_below_excerpt; ?>
+  </div>
+
+<?php } ?>
+
+<?php
+  echo render_post_publications( $post_id );
+?>
+
+<?php
   if( $post_alt_title ) {
     echo '<h2>' . $post_alt_title . '</h2>';
   }
@@ -100,10 +115,6 @@
     echo apply_filters( 'the_content', $post->post_content );
   ?>
 </div>
-
-<?php
-  echo render_post_publications( $post_id );
-?>
 
 <link rel="stylesheet"
       type="text/css"

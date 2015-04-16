@@ -62,31 +62,35 @@
     $buffer = '';
 
     if( $publications ) {
-      $buffer .= '<h3>Publications</h3>';
-      $buffer .= '<ul class="page_publications">';
+      $buffer .= '<p class="page_publications">';
+      $buffer .= 'Published in ';
+      $counter = 0;
 
     	foreach( $publications as $publication ) {
         $title = $publication[ 'publication_title' ];
         $link = $publication[ 'publication_link' ];
         $date = $publication[ 'publication_date' ];
 
-        $buffer .= '<li>';
-          if( $link ) {
-            $buffer .= '<a href="' . $link . '">';
-            $buffer .= $title;
-            $buffer .= '</a>';
-          } else {
-            $buffer .= $title;
-          }
+        if( $counter != 0 ) {
+          $buffer .= ', ';
+        }
 
-          if( $date ) {
-            $buffer .= ' on ' . $date;
-          }
+        if( $link ) {
+          $buffer .= '<a href="' . $link . '">';
+          $buffer .= $title;
+          $buffer .= '</a>';
+        } else {
+          $buffer .= $title;
+        }
 
-        $buffer .= '</li>';
+        if( $date ) {
+          $buffer .= '(' . $date . ')';
+        }
+
+        $counter++;
     	}
 
-      $buffer .= '</ul>';
+      $buffer .= '</p>';
     }
 
     return $buffer;
