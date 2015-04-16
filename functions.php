@@ -84,7 +84,7 @@
         }
 
         if( $date ) {
-          $buffer .= '(' . $date . ')';
+          $buffer .= ' (' . $date . ')';
         }
 
         $counter++;
