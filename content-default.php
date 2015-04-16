@@ -2,6 +2,10 @@
   $post = get_post();
   $post_id = $post->ID;
   $post_title = $post->post_title;
+  $post_thumb_id = get_post_thumbnail_id( $post_id );
+  $metadata = get_post( $post_thumb_id );
+  $metadata_title = $metadata->post_title;
+  $metadata_caption = $metadata->post_content;
 ?>
 
 <?php
@@ -11,7 +15,31 @@
   <div class="page_image">
 
     <?php
-        the_post_thumbnail( 'large' );
+      if( $metadata_title || $metadata_caption ) {
+        echo '<figure>';
+      }
+
+      the_post_thumbnail( 'large' );
+
+      if( $metadata_title || $metadata_caption ) {
+        echo '<figcaption class="slider_caption">';
+      }
+
+      if( $metadata_title ) {
+        echo '<strong>' . $metadata_title . '</strong>';
+      }
+
+      if( $metadata_caption ) {
+        echo '<p>' . $metadata_caption . '</p>';
+      }
+
+      if( $metadata_title || $metadata_caption ) {
+        echo '</figcaption>';
+      }
+
+      if( $metadata_title || $metadata_caption ) {
+        echo '</figure>';
+      }
     ?>
 
   </div>
