@@ -23,6 +23,7 @@
     <link rel="stylesheet"
           href="/css/style.css" />
     <meta name="viewport" content="initial-scale=1" />
+    <meta name="google-site-verification" content="JNm4PqE2SljkbSBV8slKmnDb4QMxYXv5tCHl7VD3G0M" />
 
     <?php
       if( $page_description ) {
@@ -129,3 +130,4 @@
   </header>
 
   <div class="main">
+
