@@ -17,89 +17,91 @@
 ?>
 
   <div class="page_image">
+    <div class="app_content-limiter">
+      <?php
+        if( $metadata_title || $metadata_caption ) {
+          echo '<figure>';
+        }
+
+        the_post_thumbnail( 'large' );
+
+        if( $metadata_title || $metadata_caption ) {
+          echo '<figcaption class="slider_caption">';
+        }
+
+        if( $metadata_title ) {
+          echo '<strong>' . $metadata_title . '</strong>';
+        }
+
+        if( $metadata_caption ) {
+          echo '<p>' . $metadata_caption . '</p>';
+        }
+
+        if( $metadata_title || $metadata_caption ) {
+          echo '</figcaption>';
+        }
+
+        if( $metadata_title || $metadata_caption ) {
+          echo '</figure>';
+        }
+      ?>
+    </div>
+  </div>
+
+<?php
+  }
+?>
+
+<div class="app_content-limiter">
+  <h1 class="page_headline">
+    <?php echo $post_title; ?>
+  </h1>
+
+  <div class="page_authors">
+    <?php echo render_author_list( $post ); ?>
 
     <?php
-      if( $metadata_title || $metadata_caption ) {
-        echo '<figure>';
-      }
+      if( $post_capture_date ) {
+    ?>
 
-      the_post_thumbnail( 'large' );
+      <p class="page_pubdate"> - <?php echo $post_capture_date; ?></p>
 
-      if( $metadata_title || $metadata_caption ) {
-        echo '<figcaption class="slider_caption">';
-      }
-
-      if( $metadata_title ) {
-        echo '<strong>' . $metadata_title . '</strong>';
-      }
-
-      if( $metadata_caption ) {
-        echo '<p>' . $metadata_caption . '</p>';
-      }
-
-      if( $metadata_title || $metadata_caption ) {
-        echo '</figcaption>';
-      }
-
-      if( $metadata_title || $metadata_caption ) {
-        echo '</figure>';
+    <?php
       }
     ?>
 
+    <?php
+      echo render_post_locations( $post_id );
+    ?>
   </div>
 
-<?php
-  }
-?>
-
-<h1 class="page_headline">
-  <?php echo $post_title; ?>
-</h1>
-
-<div class="page_authors">
-  <?php echo render_author_list( $post ); ?>
+  <div class="richtext richtext--full-content page_excerpt">
+    <?php echo $post_excerpt; ?>
+  </div>
 
   <?php
-    if( $post_capture_date ) {
+    if( $post_below_excerpt ) {
   ?>
 
-    <p class="page_pubdate"> - <?php echo $post_capture_date; ?></p>
+    <div class="richtext richtext--full-content">
+      <?php echo $post_below_excerpt; ?>
+    </div>
+
+  <?php } ?>
 
   <?php
+    echo render_post_publications( $post_id );
+  ?>
+
+  <?php
+    if( $post_alt_title ) {
+      echo '<h2>' . $post_alt_title . '</h2>';
     }
   ?>
 
-  <?php
-    echo render_post_locations( $post_id );
-  ?>
-</div>
-
-<div class="richtext richtext--full-content page_excerpt">
-  <?php echo $post_excerpt; ?>
-</div>
-
-<?php
-  if( $post_below_excerpt ) {
-?>
-
   <div class="richtext richtext--full-content">
-    <?php echo $post_below_excerpt; ?>
+    <?php
+      echo apply_filters( 'the_content', $post->post_content );
+    ?>
   </div>
-
-<?php } ?>
-
-<?php
-  echo render_post_publications( $post_id );
-?>
-
-<?php
-  if( $post_alt_title ) {
-    echo '<h2>' . $post_alt_title . '</h2>';
-  }
-?>
-
-<div class="richtext richtext--full-content">
-  <?php
-    echo apply_filters( 'the_content', $post->post_content );
-  ?>
 </div>

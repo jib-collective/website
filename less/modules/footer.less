@@ -1,25 +1,40 @@
 .footer {
-  font-size: .8rem;
-  padding: 0 1rem 1rem 1rem;
+  background-color: #212121;
+  font-size: .9rem;
+  padding: 2rem;
 
-  ul {
+  &,
+  a {
+    color: white;
+  }
+
+  &_menu-social {
     display: inline-block;
-    list-style: none;
+    float: right;
     margin: 0;
     padding: 0;
-  }
 
-  li {
-    display: inline-block;
-  }
+    .menu-item {
+      display: inline-block;
+      vertical-align: middle;
 
-  a {
-    color: #333;
-  }
-}
+      > a {
+        padding: 0 1.2rem;
+        text-decoration: none;
 
-@media only screen and ( max-width: 1023px ) {
-  .footer {
-    display: block;
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .menu-item + .menu-item {
+      border-left: 1px solid #5D5D5D;
+    }
+
+    img {
+      width: 25px;
+    }
   }
 }

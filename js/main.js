@@ -3,7 +3,9 @@ requirejs.config({
   paths: {
     jquery: 'components/jquery/dist/jquery',
     modernizr: 'components/modernizr/modernizr',
-    slick: 'components/slick.js/slick/slick',
+    imagesLoaded: 'components/imagesloaded/imagesloaded.pkgd.min',
+    Hammer: 'components/hammerjs/hammer.min',
+    sequence: 'components/sequencejs/src/sequence',
     webfontloader: 'components/webfontloader/webfontloader',
   },
   shim: {
@@ -26,7 +28,9 @@ require( [ 'webfontloader' ], function( WebFont ) {
   WebFont.load({
     classes: false,
     google: {
-      families: [ 'Open+Sans:400,300:latin' ],
+      families: [
+        'Open+Sans:800,400,300:latin',
+      ],
     }
   });
 
@@ -71,40 +75,21 @@ require( [ 'jquery', ], function( $ ) {
 });
 
 /* Gallery Page */
-require( [ 'jquery', ], function( $ ) {
+require( [ 'jquery', 'sequence' ], function( $, sequence ) {
   $(function() {
-    var $slider = $( '.slider_container' ),
-        options = {
-          adaptiveHeight: true,
-          slidesToShow: 1,
-          fade: true,
-          infinite: true,
-          speed: 200,
-        };
+    var $slider = $('.slider_container');
 
-    if( !$slider.length ) {
-      return;
-    }
+    var element = $slider.get(0);
 
-    require( [ 'slick', ], function() {
+    var options = {
+      autoPlay: false,
+    };
 
-      /* Init the Slider */
-      $slider.slick( options );
+    var mySequence = sequence(element, options);
 
-      /* Custom Controls */
-      $( '.slider_previous-button' )
-        .on( 'click', function( e ) {
-          e.preventDefault();
-          $( '.slider_container' ).slick( 'prev' );
-        });
-
-      $( '.slider_next-button' )
-        .on( 'click', function( e ) {
-          e.preventDefault();
-          $( '.slider_container' ).slick( 'next' );
-        });
-
-    });
+    mySequence.currentPhaseEnded = function() {
+      console.log(arguments);
+    };
   });
 });
 

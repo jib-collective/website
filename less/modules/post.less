@@ -1,45 +1,79 @@
 .post {
-  background-color: white;
-  box-shadow: 0px 0px .2rem #E8E8E8;
-  margin: 0 1rem 1rem 0;
-  overflow: hidden;
+  border: 3px solid white;
   width: 100%;
 
   > a {
-    color: #333;
-    outline: none;
+    display: block;
+    height: 100%;
     text-decoration: none;
   }
 
+  > a:hover,
+  > a:focus {
+    background-color: #ECECEC;
+  }
+
+  &_meta {
+    font-family: 'Open Sans';
+    padding: .5rem;
+  }
+
   &_headline {
-    font-family: "Open sans", Arial, sans-serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin: 0;
-    padding: .6rem 1rem;
-    position: relative;
+    border-bottom: 2px solid @base-text-color;
+    font-family: 'Open Sans';
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: .5rem 0 .5rem 0;
+    padding: 0 0 .3rem 0;
   }
 
   &_excerpt {
-    margin: 0;
-    padding: 0 1rem 1rem 1rem;
+    font-size: 1.15rem;
+    padding-bottom: 1rem;
 
     > p {
       margin: 0;
-      padding: 0;
     }
   }
 
   &_image {
-    height: auto;
+    height: 100%;
     width: 100%;
   }
-}
 
-@media only screen and ( max-width: 1023px ) {
-  .post {
-    &_excerpt {
-      font-size: .9rem;
-    }
+  &_image-wrap {
+    font-size: 0;
+    height: 278px;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  &--portrait {
+    position: relative;
+  }
+
+  &--portrait &_image-wrap {
+    height: 100%;
+  }
+
+  &--portrait &_meta {
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .8));
+    bottom: 0;
+    color: white;
+    padding: 0 1.4rem .5rem 1.4rem;
+    position: absolute;
+    text-shadow: 0 0 1px @base-text-color;
+    width: 100%;
+  }
+
+  &--portrait &_headline {
+    border-bottom: none;
+    color: white;
+    margin-bottom: 0;
+    text-shadow: 0 0 1px @base-text-color;
+  }
+
+  &--portrait &_excerpt {
+    font-size: 1.05rem;
   }
 }

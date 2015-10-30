@@ -13,5 +13,5 @@
     "modernizr": "~2.8.3",
     "webfontloader": "~1.5.17"
   },
-  "private": true
+  "license": "MIT"
 }

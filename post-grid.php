@@ -17,16 +17,19 @@
       $post_excerpt = get_field( 'excerpt', $post_id );
       $post_url = get_permalink( $post_id );
 
+      $thumbnail_id = get_post_thumbnail_id($post_id);
       $post_thumbnail = get_the_post_thumbnail( $post_id,
                                                 'featured-category-image',
                                                 array(
                                                  'class' => 'post_image',
                                                 )
                                               );
+      $thumbnail_metadata = wp_get_attachment_metadata($thumbnail_id);
+      $thumbnail_orientation = $thumbnail_metadata['width'] > $thumbnail_metadata['height'] ? 'landscape' : 'portrait';
   ?>
 
     <div class="grid_column grid_column--4 post-grid_column--4">
-      <div class="post">
+      <div class="post post--<?php echo $thumbnail_orientation; ?>">
         <a href="<?php echo $post_url ?>">
           <?php
             if( has_post_thumbnail( $post_id ) ) {

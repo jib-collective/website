@@ -2,12 +2,12 @@
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'post-formats', array( 'gallery', 'video' ) );
 
-  add_image_size( 'featured-category-image', 700 );
+  add_image_size( 'featured-category-image', 1400 );
   add_image_size( 'background-page-image', 1600 );
   add_image_size( 'gallery-image', 1024, 690 );
   add_image_size( 'category-image', 350 );
   add_image_size( 'custom-size', 220, 180 );
-  add_image_size( 'author-portrait', 200, 200 );
+  add_image_size( 'author-portrait', 250, 250 );
   set_post_thumbnail_size( 150, 150 );
 
   function register_my_menu() {
