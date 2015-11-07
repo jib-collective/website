@@ -2,7 +2,7 @@
       </div>
 
     <footer class="footer">
-      &copy; <?php echo date( "Y" ); ?> jib-collective
+      &copy; <?php echo date( "Y" ); ?> jib collective
       <?php
 
         // find out menu ID
