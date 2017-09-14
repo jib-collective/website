@@ -1,4 +1,4 @@
 jib-collective
 ==============
 
-A fancy wordpress theme.
+Our fancy wordpress theme.
