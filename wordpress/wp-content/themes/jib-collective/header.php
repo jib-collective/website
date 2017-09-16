@@ -20,7 +20,11 @@
 <html>
   <head>
     <title><?php echo $page_title; ?></title>
-    <meta name="viewport" content="initial-scale=1" />
+
+    <?php wp_head(); ?>
+
+    <meta name="viewport"
+          content="initial-scale=1" />
     <meta name="google-site-verification"
           content="JNm4PqE2SljkbSBV8slKmnDb4QMxYXv5tCHl7VD3G0M" />
 
