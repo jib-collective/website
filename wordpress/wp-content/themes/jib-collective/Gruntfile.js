@@ -59,7 +59,7 @@ module.exports = function ( grunt ) {
       dev: {
         src: [ 'js/components/normalize.css/normalize.css',
                'css/dev/style.css' ],
-        dest: 'css/style.css',
+        dest: 'style.css',
       },
     },
   });
