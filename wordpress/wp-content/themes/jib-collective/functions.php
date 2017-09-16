@@ -118,4 +118,7 @@
 
   add_action( 'init', 'register_my_menu' );
   add_filter( 'parse_query', 'exclude_pages_from_admin' );
+
+  wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', false, '1.0', 'screen');
+  wp_enqueue_script( 'script', get_template_directory_uri() . '/js/main.js', false, '1.0', true);
 ?>
