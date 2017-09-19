@@ -11,7 +11,7 @@ wp-content/cache/
 wp-content/backups/
 sitemap.xml.gz
 wp-config.php
-js/components/
-js/dist/
+/js/components/
+/js/dist/
 /css/
-node_modules/
+/node_modules/
