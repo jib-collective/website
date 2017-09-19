@@ -13,5 +13,5 @@ sitemap.xml.gz
 wp-config.php
 js/components/
 js/dist/
-css/
+/css/
 node_modules/
