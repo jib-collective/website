@@ -123,4 +123,7 @@
   add_action( 'init', 'register_my_menu' );
   add_action( 'wp_enqueue_scripts', 'register_styles' );
   add_filter( 'parse_query', 'exclude_pages_from_admin' );
+
+  remove_action('wp_head', 'print_emoji_detection_script', 7);
+  remove_action('wp_print_styles', 'print_emoji_styles');
 ?>
