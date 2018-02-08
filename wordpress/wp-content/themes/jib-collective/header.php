@@ -1,7 +1,6 @@
 <?php
   $page_title = wp_title( '', false );
   $page_description = get_bloginfo( 'description' );
-  $css_directory = get_bloginfo( 'template_directory' );
 
   if( !$page_title ) {
     $page_title = 'jib-collective';
