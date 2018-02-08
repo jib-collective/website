@@ -7,3 +7,6 @@ wordpress/wp-content/cache/
 wordpress/wp-content/uploads/
 wordpress/wp-content/advanced-cache.php
 wordpress/wp-content/wp-cache-config.php
+wordpress/wp-content/themes/jib-collective/node_modules/
+wordpress/wp-content/themes/jib-collective/css/
+wordpress/wp-content/themes/jib-collective/style.css

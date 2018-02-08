@@ -14,47 +14,6 @@ module.exports = function ( grunt ) {
       }
     },
 
-    requirejs: {
-      dist: {
-        options: {
-          baseUrl: 'js',
-          name: 'main',
-          mainConfigFile: 'js/main.js',
-          out: 'js/dist/main.js',
-          optimize: 'uglify2',
-          paths: {
-            requireLib: 'components/requirejs/require',
-          },
-          include: [
-            'requireLib',
-          ],
-          uglify2: {
-            output: {
-              beautify: false,
-            },
-          }
-        },
-      },
-    },
-
-    watch: {
-      less: {
-        files: [ 'less/**/*.less' ],
-        tasks: [ 'less', 'concat', ],
-        options: {
-          spawn: false,
-        },
-      },
-
-      js: {
-        files: [ 'js/*.js' ],
-        tasks: [ 'requirejs', ],
-        options: {
-          spawn: false,
-        },
-      },
-    },
-
     concat: {
       dev: {
         src: [ 'js/components/normalize.css/normalize.css',
@@ -65,7 +24,6 @@ module.exports = function ( grunt ) {
   });
 
   grunt.registerTask('compile', [ 'less',
-                                  'concat',
-                                  'requirejs', ]);
+                                  'concat', ]);
 };
 
