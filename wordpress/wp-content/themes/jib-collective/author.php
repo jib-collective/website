@@ -23,14 +23,13 @@
     $email = get_field( 'publicemail', 'user_' . $author_id );
     $pgp = get_field( 'pgp-key', 'user_' . $author_id );
 
-     $author_query = new WP_Query(
-       array(
-         'post_type' => 'post',
-         'post_status' => 'publish',
-         'post_category' => 5,
-         'author_name' => $userdata['nickname'][0],
-         'posts_per_page' => -1,
-       )
+    $author_query = new WP_Query(
+      array(
+        'post_type' => 'story',
+        'post_status' => 'publish',
+        'author_name' => $userdata['nickname'][0],
+        'posts_per_page' => -1,
+      )
      );
 
      $POSTS = $author_query->posts;

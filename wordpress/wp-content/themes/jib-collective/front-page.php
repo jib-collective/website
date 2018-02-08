@@ -1,11 +1,7 @@
 <?php get_header(); ?>
 
 <?php
-  $POSTS = query_posts( array( 'tag__in' => array( 4 ),
-                               'category__in' => array( 3 ),
-                               'post_status' => 'publish',
-                        ) );
-
+  $POSTS = query_posts(array('post_type' => 'story', 'post_status' => 'publish'));
   $FEATURED_POSTS = true;
 ?>
 

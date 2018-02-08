@@ -22,8 +22,9 @@
 
     global $pagenow, $post_type;
 
-    if ( $pagenow == 'edit.php' && $post_type == 'page' )
-      $query-> query_vars[ 'post__not_in' ] = array( 49, 43 );
+    if ($pagenow == 'edit.php' && $post_type == 'page') {
+      $query-> query_vars['post__not_in'] = array(49, 43);
+    }
   }
 
   function render_author_list( $post ) {
@@ -121,7 +122,36 @@
     wp_enqueue_script( 'script', get_template_directory_uri() . '/js/main.js', false, '1.0', true);
   }
 
-  add_action( 'init', 'register_my_menu' );
-  add_action( 'wp_enqueue_scripts', 'scripts_and_styles' );
-  add_filter( 'parse_query', 'exclude_pages_from_admin' );
+  function register_stories_type() {
+    $stories = array(
+      'public' => true,
+      'publicly_queryable' => true,
+      'show_ui' => true,
+      'show_in_menu' => true,
+      'query_var' => true,
+      'rewrite' => array(
+        'slug' => 'stories'
+      ),
+      'hierarchical' => false,
+      'supports' => array(
+        'title',
+        'editor',
+        'thumbnail',
+      ),
+      'menu_position' => 2,
+      'labels' => array(
+        'name' => 'Stories',
+        'public' => true,
+        'label'  => 'Stories',
+        'singular_name' => 'Story',
+      ),
+    );
+
+    register_post_type('story', $stories);
+  }
+
+  add_action('init', 'register_stories_type');
+  add_action('init', 'register_my_menu');
+  add_action('wp_enqueue_scripts', 'scripts_and_styles');
+  add_filter('parse_query', 'exclude_pages_from_admin');
 ?>
