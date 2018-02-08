@@ -1,43 +1,20 @@
-<?php
-  $page_title = wp_title( '', false );
-  $page_description = get_bloginfo( 'description' );
-
-  if( !$page_title ) {
-    $page_title = 'jib-collective';
-  } else {
-    $page_title .= " | jib-collective";
-  }
-
-  if(  is_single() || is_page() ) {
-    $post = get_post();
-    $page_description = get_field( 'excerpt', $post->ID );
-  }
-?>
-
-<!doctype html >
+<!doctype html>
 
 <html>
   <head>
-    <title><?php echo $page_title; ?></title>
-
-    <?php wp_head(); ?>
+    <title>
+      <?php wp_title(' | ', true, 'right') ?>
+      <?php echo bloginfo( 'name' ); ?>
+    </title>
 
     <meta name="viewport"
           content="initial-scale=1" />
     <meta name="google-site-verification"
           content="JNm4PqE2SljkbSBV8slKmnDb4QMxYXv5tCHl7VD3G0M" />
+    <meta name="description"
+          content="<?php echo get_bloginfo( 'description' ); ?>" />
 
-    <?php
-      if( $page_description ) {
-    ?>
-
-      <meta name="description"
-            content="<?php echo wp_strip_all_tags( $page_description ); ?>" />
-
-    <?php
-      }
-    ?>
-
+    <?php wp_head(); ?>
   </head>
 
 <?php
@@ -46,8 +23,6 @@
   if( is_page() ) {
     $page_id = $post->ID;
     $background_image_url = get_field( 'background-image', $page_id );
-
-
 
     if( $background_image_url ) {
       $background = $background_image_url;
