@@ -1,0 +1,323 @@
+<?php
+/**
+ * @package WP Static HTML Output
+ *
+ * Copyright (c) 2011 Leon Stafford
+ */
+
+$ajax_nonce = wp_create_nonce( 'wpstatichtmloutput' );
+
+function displayCheckbox($template_variables, $field_name, $field_label, $premium = false) {
+	// unlock premium options if user has access to use them
+	if ( wpsho_fr()->is_not_paying() && $premium) {
+		$premium = true;
+	} else {
+		$premium = false;
+	}
+
+	echo "
+		<fieldset>
+			<label for='{$field_name}'>
+				<input name='{$field_name}' id='{$field_name}' value='1' type='checkbox' " . ( $template_variables->{$field_name} == 1 ? 'checked' : '' ) . ($premium ? 'disabled' : '') . " />
+				<span>" .  __($field_label, 'static-html-output-plugin') . "</span>
+			";
+
+	if ( wpsho_fr()->is_not_paying() && $premium) {
+		echo ' <a href="' . wpsho_fr()->get_upgrade_url() . '">' .
+			__('Enable premium option', 'static-html-output-plugin') .
+		'</a>';
+	}
+	
+
+	echo "</label>
+		</fieldset>
+	";
+}
+
+function displayTextfield($template_variables, $field_name, $field_label, $description, $type = 'text') {
+	echo "
+		<input name='{$field_name}' class='regular-text' id='{$field_name}' type='{$type}' value='". esc_attr($template_variables->ftpServer) . "' placeholder='" .  __($field_label, 'static-html-output-plugin') . "' />
+		<span class='description'>$description</span>
+		<br>
+	";
+}
+?>
+
+
+<div class="wrap">
+	
+	<h2><?php echo __('WP Static HTML Output - Configure & Run', 'static-html-output-plugin');?></h2>
+
+	<div class="postbox-container">
+		<div class="metabox-holder">
+			<div class="meta-box-sortables ui-sortable">
+
+				<form id="general-options" class="options-form" method="post" action="">
+
+					<div class="postbox">
+
+              <h3>
+                <span><?php echo __('Configurable options', 'static-html-output-plugin');?></span>
+              </h3>
+
+              <div class="inside">
+				<p class="intro-text"> Exporting your static site is easy - just set the options you need below and click on the "Start static site export" at the bottom of the page!
+				</p>	
+
+
+                  <strong><label><?php echo __('Where do you want to deploy your static site to?', 'static-html-output-plugin');?></label></strong>
+
+	<div style="margin-top:10px;margin-bottom:10px;">
+
+
+<!-- legacy multi-export functionality relied on the baseUrl field being first in the settings block -->
+<input style="display:none;" type="text" id="baseUrl" name="baseUrl" value="<?php echo esc_attr($this->baseUrl) ?>" size="50" placeholder="http://mystaticsite.com" />
+
+
+<?php
+
+function generateDeploymentMethodOptions() {
+	$options = array(
+	  "" => array('Choose where to deploy your static site to', 'free'),
+	  "zip" => array('ZIP - a downloadable ZIP file of your statically exported site', 'free'),
+	  "folder" => array('Folder - a directory on this server', 'free'),
+	  "ftp" => array('FTP - Transfer your static site to another server', 'premium'),
+	  "s3" => array('S3 - Amazon\'s Simple Storage Service', 'premium'),
+	  "bunnycdn" => array('BunnyCDN - a low cost CDN allowing static website hosting', 'premium'),
+	  "dropbox" => array('Dropbox - send your static site to Dropbox', 'premium'),
+	  "github" => array('GitHub - host your site for free on GitHub Pages or commit to a specific repo/branch', 'premium'),
+	  "netlify" => array('Netlify - a static website hosting specialist', 'premium')
+	);
+
+	foreach ($options as $key => $value) {
+		if ($value[1] == 'premium' && wpsho_fr()->is_not_paying()) {
+			echo "<option value='$key' disabled>$value[0]</option>";
+		} else {
+			echo "<option value='$key'>$value[0]</option>";
+		}
+	}
+}
+
+?>
+
+<!-- TODO: disable options when not premium -->
+<!-- disabled="disabled" -->
+<select class="selected_deployment_method" name="selected_deployment_option">
+
+<?php generateDeploymentMethodOptions(); ?>
+
+</select>
+
+<?php
+	if ( wpsho_fr()->is_not_paying()) {
+		echo ' <a href="' . wpsho_fr()->get_upgrade_url() . '">' .
+			__('Enable premium options', 'static-html-output-plugin') .
+		'</a>';
+	}
+?>
+
+    </div>
+
+<br style="clear:both;" />
+
+<?php
+
+// load up each deployment settings block
+
+$deployment_options = array(
+	'zip',
+	'ftp',
+	'folder',
+	's3',
+	'dropbox',
+	'bunnycdn',
+	'netlify',
+	'github'
+
+);
+
+foreach($deployment_options as $deployment_option) {
+
+	require_once(__DIR__ . '/' . $deployment_option . '_settings_block.phtml');
+
+}
+
+?>
+
+<!-- placeholder input fields to allow select menu deployment options to use existing behaviour -->
+<span class="hiddenExportOptions" style="display:none;">
+
+
+
+<?php echo displayCheckbox($this, 'createZip', 'Create a ZIP file of your statically exported site, ready for you to manually deploy. Download link will appear in the Export Log below'); ?>
+<?php echo displayCheckbox($this, 'sendViaFTP', 'Transfer files via FTP', 1); ?>
+<?php echo displayCheckbox($this, 'sendViaS3', 'Transfer files via S3', 1); ?>
+<?php echo displayCheckbox($this, 'sendViaBUNNYCDN', 'Transfer files via BunnyCDN', 1); ?>
+<?php echo displayCheckbox($this, 'sendViaDropbox', 'Transfer files via Dropbox', 1); ?>
+<?php echo displayCheckbox($this, 'sendViaGithub', 'Transfer files via GitHub', 1); ?>
+<?php echo displayCheckbox($this, 'sendViaNetlify', 'Transfer files via Netlify', 1); ?>
+
+
+</span>
+
+
+<br />
+
+                  <strong class="advanced_settings_header"><label><?php echo __('Advanced settings (click to toggle)', 'static-html-output-plugin');?></label></strong>
+
+
+<div class="advanced_settings" style="display:none;">
+
+<br />
+
+
+
+<?php echo displayCheckbox($this, 'sendViaBasic', 'My WP site requires Basic Auth to access'); ?>
+
+<span class="basic">
+	<?php echo displayTextfield($this, 'basicAuthUser', 'Basic Auth user', '', ''); ?>
+	<?php echo displayTextfield($this, 'basicAuthPassword', 'Basic Auth password', '', 'password'); ?>
+</span>
+
+                <p>
+                  <strong><label for="outputDirectory"><?php echo __('Override Output Directory', 'static-html-output-plugin');?></label></strong>
+                  <p>
+                    <i>Just leave this blank and it will write any export files to your WordPress uploads directory at: <?php echo $this->uploadsPath; ?> else, give the full path to the directory on your server</i>
+                  </p>
+
+                  <input type="text" id="outputDirectory" name="outputDirectory" value="<?php echo esc_html($this->outputDirectory) ?>" size="50" />
+                </p>
+
+                <p>
+                  <strong><label for="outputDirectory"><?php echo __('Don\'t include all files from your uploads directory', 'static-html-output-plugin');?></label></strong>
+                  <p>
+                <fieldset>
+                    <label for="dontIncludeAllUploadFiles">
+                    <input name="dontIncludeAllUploadFiles" id="dontIncludeAllUploadFiles" value="1" type="checkbox" <?php if ($this->dontIncludeAllUploadFiles == 1) echo "checked"; ?> />
+                        <span><?php echo __('Best to leave this unchecked in most cases. Are there some files in your WP uploads directory you don\'t want included in your export? Check this box to limit the export to only files the plugin finds when crawling your site.', 'static-html-output-plugin');?></span>
+                    </label>
+                </fieldset>
+                </p>
+                
+                <p>
+                  <strong><label for="additionalUrls"><?php echo __('Additional Urls', 'static-html-output-plugin');?></label></strong>
+                  <p>
+                    <i>For a few themes, certain files may not be detected as part of the export process. Enter any such files here, one per line.
+
+                    Enter them as the full URL, including your WordPress site url, ie:</i>
+<pre>http://localhost/wp-content/themes/twentyseventeen/banana.jpg
+http://172.17.0.3/my_pricelist.pdf</pre>
+                  </p>
+                  <textarea class="widefat" name="additionalUrls" id="additionalUrls" rows="5" cols="10"><?php echo esc_html($this->additionalUrls) ?></textarea>
+                </p>
+		<br>
+
+
+		<strong><label><?php echo __('Path rewriting', 'static-html-output-plugin');?></label></strong>
+		<p>In order to hide any trace that your site uses WordPress, the following paths will be rewritten. You can leave these default options in, but for more control, you can overwrite them. They cannot be empty.</p>
+			
+
+		<b>/wp-contents</b> will be re-written to <b class="base_url_preview"></b> <input name="rewriteWPCONTENT" class="regular-text rewrite" id="rewriteWPCONTENT" value="<?php echo esc_attr($this->rewriteWPCONTENT) ?>" placeholder="<?php echo __('contents', 'static-html-output-plugin');?>" />
+		<br>
+		<b><?php echo str_replace(home_url(), '', get_template_directory_uri()); ?></b> will be re-written to <b class="base_url_preview"></b><b>wp-content/themes/</b> <input name="rewriteTHEMEDIR" class="regular-text rewrite" id="rewriteTHEMEDIR" value="<?php echo esc_attr($this->rewriteTHEMEDIR) ?>" placeholder="<?php echo __('theme', 'static-html-output-plugin');?>" />
+		<br>
+		<b><?php $default_upload_dir = wp_upload_dir(); echo str_replace(ABSPATH, '/', $default_upload_dir['basedir']); ?></b> will be re-written to <b class="base_url_preview"></b><b>wp-content/</b>  <input name="rewriteUPLOADS" class="regular-text rewrite" id="rewriteUPLOADS" value="<?php echo esc_attr($this->rewriteUPLOADS) ?>" placeholder="<?php echo __('data', 'static-html-output-plugin');?>" />
+		<br>
+		<b><?php echo str_replace(ABSPATH, '/', get_theme_root()); ?></b> will be re-written to <b class="base_url_preview"></b><b>wp-content/</b>  <input name="rewriteTHEMEROOT" class="regular-text rewrite" id="rewriteTHEMEROOT" value="<?php echo esc_attr($this->rewriteTHEMEROOT) ?>" placeholder="<?php echo __('ui', 'static-html-output-plugin');?>" />
+		<br>
+		<b><?php echo str_replace(ABSPATH, '/', WP_PLUGIN_DIR); ?></b> will be re-written to <b class="base_url_preview"></b><b>wp-content/</b>  <input name="rewritePLUGINDIR" class="regular-text rewrite" id="rewritePLUGINDIR" value="<?php echo esc_attr($this->rewritePLUGINDIR) ?>" placeholder="<?php echo __('lib', 'static-html-output-plugin');?>" />
+		<br>
+		<b><?php echo '/' . WPINC; ?></b> will be re-written to <b class="base_url_preview"></b> <input name="rewriteWPINC" class="regular-text rewrite" id="rewriteWPINC" value="<?php echo esc_attr($this->rewriteWPINC) ?>" placeholder="<?php echo __('inc', 'static-html-output-plugin');?>" />
+
+		<br>
+		<br>
+		<strong><label><?php echo __('Scheduled / programmatic exports via WP-Cron', 'static-html-output-plugin');?></label></strong>
+		<p>Using the <a href="https://wordpress.org/plugins/wp-crontrol/" target="_blank">WP Crontrol</a> plugin, you can add the following hook to a schedule to trigger an export. This will run your export using the settings you've saved via this screen. Using this method, you can schedule your exports to happen daily or if you're after an on-post publish kind of behaviour, you could set this to every few minutes.</p>
+		<input type="text" style="width:340px;" value="wp_static_html_output_server_side_export_hook" disabled />
+<?php
+	// show upgrade link for those not on professional_edition
+	if ( ! wpsho_fr()->is_plan('professional_edition') ) {
+		 echo '<a href="' . wpsho_fr()->get_upgrade_url() . '">' .
+            __('Upgrade to the Professional Edition for programmatic access', 'static-html-output-plugin') .
+            '</a>';
+	}
+?>
+</div> <!-- end advanced settings -->
+
+		<br>
+
+					<p class="submit">
+            <?php wp_nonce_field($this->onceAction) ?>
+						<input id="formActionHiddenField" class="hiddenActionField" type="hidden" name="action" value="wp_static_html_output_ajax" />
+						<input id="hiddenNonceField" type="hidden" name="nonce" value="<?php echo $ajax_nonce; ?>" />
+						<input id="hiddenAJAXAction" type="hidden" name="ajax_action" value="" />
+						<input name="staticExportSettings" class="hiddenSettingsField" type="hidden" name="action" value="" />
+						<button class="saveSettingsButton button-primary">Save current options</button>
+
+<!-- TODO: refactor multiple export targets functionality -->
+<span style="display:none;">
+
+                        <button class="button addAnotherTargetButton" disabled>Add another export target</button>
+                        <button class="button removeTargetButton">Remove this export target</button>
+</span>
+
+                        <button class="button resetDefaultSettingsButton">Reset to default settings</button>
+					</p>
+						</div>
+					</div>
+
+<?php set_time_limit(600); ?>
+
+				</form>
+
+
+
+					<div class="postbox exportActionsPane" style="display:none;">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+
+              <h3 class="hndle"><span><?php echo __('Export your site', 'static-html-output-plugin');?></span></h3>
+
+              <div class="inside">
+                  <p>
+                    <i>Clicking the button below will start the process of generating a static site from your WordPress installation. Depending on the size of your website, this process may take some time.</i>
+                  </p>
+
+					<p class="submit">
+            <?php wp_nonce_field($this->onceAction) ?>
+						<button id="startExportButton" class="button-primary">Start static site export</button>
+						<a id="downloadZIP" ref="#" target="_blank"><button  class="button-secondary" disabled>Download your ZIP file (when export is complete)</button></a>
+					</p>
+                <p>
+
+    <div>
+        <img src="<?php echo plugins_url('../images/dashinfinity.gif', __FILE__); ?>" id="progress" />
+        <h2 style="clear:both;">Export Log</h2>
+
+        <textarea id="exportStatus">
+Your progress will update here every few seconds and this text area will automatically resize to fit the contents of the full log...
+        </textarea>
+    </div>
+
+
+                </p>
+		<label style="display:none;">Poll interval <input id="pollIntervalSetting" value="500" /> </label>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php if (! getenv('LIVESHUSH')) : ?>
+<!-- Start of LiveChat (www.livechatinc.com) code -->
+<script type="text/javascript">
+window.__lc = window.__lc || {};
+window.__lc.license = 9890645;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+</script>
+<!-- End of LiveChat code -->
+<?php endif; ?>
